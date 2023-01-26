@@ -24,11 +24,15 @@ namespace _1erParcial
 
         private void SUMARBoton_Click(object sender, EventArgs e)
         {
+            // Variables
+            //tipo variable, Nombre variable = pasar texto a decimal(cactura de datos a convertir)
             decimal Numero1 = Convert.ToDecimal(Numero1textBox.Text);
             decimal Numero2 = Convert.ToDecimal(Numero2textBox.Text);
 
+            // Operacion
             decimal resultado = Numero1+ Numero2;
 
+            // mostrar mensaje en pantalla ventana emergente
             MessageBox.Show("La suma es : " + resultado);
         }
     }
