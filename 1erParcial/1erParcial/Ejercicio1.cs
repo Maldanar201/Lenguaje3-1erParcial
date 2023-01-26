@@ -10,11 +10,26 @@ using System.Windows.Forms;
 
 namespace _1erParcial
 {
-    public partial class Form1 : Form
+    public partial class Ejercicio1 : Form
     {
-        public Form1()
+        public Ejercicio1()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SUMARBoton_Click(object sender, EventArgs e)
+        {
+            decimal Numero1 = Convert.ToDecimal(Numero1textBox.Text);
+            decimal Numero2 = Convert.ToDecimal(Numero2textBox.Text);
+
+            decimal resultado = Numero1+ Numero2;
+
+            MessageBox.Show("La suma es : " + resultado);
         }
     }
 }
