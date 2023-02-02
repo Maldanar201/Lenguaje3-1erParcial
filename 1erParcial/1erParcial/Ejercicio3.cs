@@ -47,7 +47,9 @@ namespace _1erParcial
             MinusculasTextBox.Text = cadena.ToLower();
 
             //REMPLAZAR UNA CADENA DE TEXTO
-            RemplazarTextBox.Text = cadena.Replace("Carlos", "GUEY");
+            RemplazarTextBox.Text = cadena.Replace("Carlos", "MI BUKY");
+            //metodo Repalce cambia el contenido de la variable cadena por el parametro asignado("1","2")lo que esta en 1 por el 2
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
