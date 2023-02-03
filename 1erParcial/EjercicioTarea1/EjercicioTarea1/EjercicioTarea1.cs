@@ -20,19 +20,21 @@ namespace EjercicioTarea1
 
         private void Ejecutarbutton_Click(object sender, EventArgs e)
         {
+            // Valida que el campo a comprobar no este vacio
             if(NumeroTextBox.Text == "")
             {
                 errorProvider1.SetError(NumeroTextBox, " Ingrese un Valor Numerico. ");
                 return;
-            }       
-           
+            }     
             errorProvider1.Clear();
 
+            // inicializa el proceso
             int numero = Convert.ToInt32(NumeroTextBox.Text);            
             ParImpar(numero);
             negativoPositivo(numero);
         }
 
+        //Proceso para validar numeros pares e impares
         private string ParImpar(int num1)
         {
             if(num1 % 2 == 0) 
@@ -44,8 +46,8 @@ namespace EjercicioTarea1
                 return ParImpartextBox.Text = " El Numero " + num1 + " es Impar.";
             }
         }
-
-        private String negativoPositivo(int num)
+        //Proceso para validar si el numero es positivo o negativo
+        private string negativoPositivo(int num)
         {
             if(num <= 0)
             {
@@ -56,7 +58,7 @@ namespace EjercicioTarea1
                 return PositivoNegativotextBox.Text = " El Numero " + num + " es Positivo";
             }
         }
-
+        // Restriccion en TexBox para permitir numeros unicamente
         private void NumeroTextBox_TextChanged(object sender, EventArgs e)
         {
             // Permitir unicamente los caracteres selecionados en la caja de texto, "[ejemplo]" lo que esta dentro
