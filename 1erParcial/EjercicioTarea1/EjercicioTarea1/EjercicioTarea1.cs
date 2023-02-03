@@ -28,24 +28,24 @@ namespace EjercicioTarea1
            
             errorProvider1.Clear();
 
-            decimal numero = Convert.ToDecimal(NumeroTextBox.Text);            
+            int numero = Convert.ToInt32(NumeroTextBox.Text);            
             ParImpar(numero);
             negativoPositivo(numero);
         }
 
-        private string ParImpar(decimal num1)
+        private string ParImpar(int num1)
         {
             if(num1 % 2 == 0) 
             {
-                return ParImpartextBox.Text = " el Numero " + num1 + " es Par.";
+                return ParImpartextBox.Text = " El Numero " + num1 + " es Par.";
             }
             else
             {
-                return ParImpartextBox.Text = " el Numero " + num1 + " es Impar.";
+                return ParImpartextBox.Text = " El Numero " + num1 + " es Impar.";
             }
         }
 
-        private String negativoPositivo(decimal num)
+        private String negativoPositivo(int num)
         {
             if(num <= 0)
             {
