@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EjercicioTarea1
 {
@@ -19,12 +20,20 @@ namespace EjercicioTarea1
 
         private void Ejecutarbutton_Click(object sender, EventArgs e)
         {
-            int numero = Convert.ToInt32(NumeroTextBox.Text);
+            if(NumeroTextBox.Text == "")
+            {
+                errorProvider1.SetError(NumeroTextBox, " Ingrese un Valor Numerico. ");
+                return;
+            }       
+           
+            errorProvider1.Clear();
+
+            decimal numero = Convert.ToDecimal(NumeroTextBox.Text);            
             ParImpar(numero);
             negativoPositivo(numero);
         }
 
-        private string ParImpar(int num1)
+        private string ParImpar(decimal num1)
         {
             if(num1 % 2 == 0) 
             {
@@ -36,7 +45,7 @@ namespace EjercicioTarea1
             }
         }
 
-        private String negativoPositivo(int num)
+        private String negativoPositivo(decimal num)
         {
             if(num <= 0)
             {
@@ -45,6 +54,16 @@ namespace EjercicioTarea1
             else
             {
                 return PositivoNegativotextBox.Text = " El Numero " + num + " es Positivo";
+            }
+        }
+
+        private void NumeroTextBox_TextChanged(object sender, EventArgs e)
+        {
+            // Permitir unicamente los caracteres selecionados en la caja de texto, "[ejemplo]" lo que esta dentro
+            if (System.Text.RegularExpressions.Regex.IsMatch(NumeroTextBox.Text, "[^0-9,-]"))
+            {
+                MessageBox.Show("Por Favor Ingrese un valor Numerico.");
+                NumeroTextBox.Text = NumeroTextBox.Text.Remove(NumeroTextBox.Text.Length - 1);
             }
         }
     }
