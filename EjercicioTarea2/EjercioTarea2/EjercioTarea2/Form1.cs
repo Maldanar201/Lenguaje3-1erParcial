@@ -20,11 +20,16 @@ namespace EjercioTarea2
         
         private async void calcularButton_Click(object sender, EventArgs e)
         {
+            if(txtNombre.Text == "")
+            {
+                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
+                return;
+            }
             string nombre = txtNombre.Text;
-            decimal nota1 = Convert.ToDecimal(Nota1txt.Text);
-            decimal nota2 = Convert.ToDecimal(Nota2txt.Text);
-            decimal nota3 = Convert.ToDecimal(Nota3txt.Text);
-            decimal nota4 = Convert.ToDecimal(Nota4txt.Text);
+            decimal nota1 = Nota1txt.Text == string.Empty ? 0 : Convert.ToDecimal(Nota1txt.Text);
+            decimal nota2 = Nota2txt.Text == string.Empty ? 0 : Convert.ToDecimal(Nota2txt.Text);
+            decimal nota3 = Nota3txt.Text == string.Empty ? 0 : Convert.ToDecimal(Nota3txt.Text);
+            decimal nota4 = Nota4txt.Text == string.Empty ? 0 : Convert.ToDecimal(Nota4txt.Text);
 
             decimal total = await SumarAsync(nota1, nota2, nota3, nota4);
             txtSuma.Text = total.ToString();
@@ -52,6 +57,12 @@ namespace EjercioTarea2
         
         private async void NUEVObutton_Click(object sender, EventArgs e)
         {
+            if (txtNombre.Text == "")
+            {
+                errorProvider1.SetError(txtNombre, "Ingrese un Nombre");
+                return;
+            }
+
             // adicionar renglon en la Tabla
             int renglon = PromedioAlumDataGridView.Rows.Add();
             //Agragar informacion en las celdas
