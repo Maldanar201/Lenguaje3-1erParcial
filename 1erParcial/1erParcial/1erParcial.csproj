@@ -94,6 +94,12 @@
     <Compile Include="Ejercicio8.Designer.cs">
       <DependentUpon>Ejercicio8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ejercicio9.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ejercicio9.Designer.cs">
+      <DependentUpon>Ejercicio9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ejercicio1.resx">
@@ -120,6 +126,9 @@
     <EmbeddedResource Include="Ejercicio8.resx">
       <DependentUpon>Ejercicio8.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ejercicio9.resx">
+      <DependentUpon>Ejercicio9.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -141,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\POO\POO.csproj">
+      <Project>{05128e0c-842e-494f-8d6d-84433e50f6e1}</Project>
+      <Name>POO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
