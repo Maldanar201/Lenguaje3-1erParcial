@@ -46,14 +46,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Bienvenida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Bienvenida.Designer.cs">
+      <DependentUpon>Bienvenida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Descuento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Descuento.Designer.cs">
+      <DependentUpon>Descuento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario3.Designer.cs">
+      <DependentUpon>Formulario3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interes.Designer.cs">
+      <DependentUpon>Interes.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Bienvenida.resx">
+      <DependentUpon>Bienvenida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Descuento.resx">
+      <DependentUpon>Descuento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario3.resx">
+      <DependentUpon>Formulario3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interes.resx">
+      <DependentUpon>Interes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

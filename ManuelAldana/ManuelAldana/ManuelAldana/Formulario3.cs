@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ManuelAldana
 {
-    public partial class Form1 : Form
+    public partial class Formulario3 : Form
     {
-        public Form1()
+        public Formulario3()
         {
             InitializeComponent();
         }
