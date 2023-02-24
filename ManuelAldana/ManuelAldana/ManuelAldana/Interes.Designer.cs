@@ -29,13 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.ValorTextBox = new System.Windows.Forms.TextBox();
-            this.InteresTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tiempoTextBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.calcularButton = new System.Windows.Forms.Button();
-            this.regresarButton = new System.Windows.Forms.Button();
             this.SalirButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,68 +42,37 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(56, 160);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
+            this.label1.Size = new System.Drawing.Size(166, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Valor Depositado : ";
-            // 
-            // ValorTextBox
-            // 
-            this.ValorTextBox.Location = new System.Drawing.Point(159, 157);
-            this.ValorTextBox.Name = "ValorTextBox";
-            this.ValorTextBox.Size = new System.Drawing.Size(100, 20);
-            this.ValorTextBox.TabIndex = 1;
-            // 
-            // InteresTextBox
-            // 
-            this.InteresTextBox.Location = new System.Drawing.Point(159, 183);
-            this.InteresTextBox.Name = "InteresTextBox";
-            this.InteresTextBox.Size = new System.Drawing.Size(100, 20);
-            this.InteresTextBox.TabIndex = 3;
+            this.label1.Text = "Valor Depositado :  L. 200,000.00";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(56, 186);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(150, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Interes a ganar : ";
-            // 
-            // tiempoTextBox2
-            // 
-            this.tiempoTextBox2.Location = new System.Drawing.Point(159, 209);
-            this.tiempoTextBox2.Name = "tiempoTextBox2";
-            this.tiempoTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.tiempoTextBox2.TabIndex = 5;
+            this.label2.Text = "Interes a ganar :  1.5 mensual.";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(56, 212);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 13);
+            this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tiempo en Meses : ";
+            this.label3.Text = "Tiempo : 12 Meses. ";
             // 
             // calcularButton
             // 
-            this.calcularButton.Location = new System.Drawing.Point(159, 235);
+            this.calcularButton.Location = new System.Drawing.Point(159, 269);
             this.calcularButton.Name = "calcularButton";
-            this.calcularButton.Size = new System.Drawing.Size(100, 30);
+            this.calcularButton.Size = new System.Drawing.Size(100, 39);
             this.calcularButton.TabIndex = 6;
             this.calcularButton.Text = "Calcular";
             this.calcularButton.UseVisualStyleBackColor = true;
             this.calcularButton.Click += new System.EventHandler(this.calcularButton_Click);
-            // 
-            // regresarButton
-            // 
-            this.regresarButton.Location = new System.Drawing.Point(46, 357);
-            this.regresarButton.Name = "regresarButton";
-            this.regresarButton.Size = new System.Drawing.Size(97, 39);
-            this.regresarButton.TabIndex = 7;
-            this.regresarButton.Text = "regresar";
-            this.regresarButton.UseVisualStyleBackColor = true;
-            this.regresarButton.Click += new System.EventHandler(this.regresarButton_Click);
             // 
             // SalirButton
             // 
@@ -145,13 +110,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.SalirButton);
-            this.Controls.Add(this.regresarButton);
             this.Controls.Add(this.calcularButton);
-            this.Controls.Add(this.tiempoTextBox2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.InteresTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.ValorTextBox);
             this.Controls.Add(this.label1);
             this.Name = "Interes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -164,13 +125,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ValorTextBox;
-        private System.Windows.Forms.TextBox InteresTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tiempoTextBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button calcularButton;
-        private System.Windows.Forms.Button regresarButton;
         private System.Windows.Forms.Button SalirButton;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label4;
