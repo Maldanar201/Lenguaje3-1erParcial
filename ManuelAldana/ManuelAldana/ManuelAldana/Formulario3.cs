@@ -12,9 +12,44 @@ namespace ManuelAldana
 {
     public partial class Formulario3 : Form
     {
+        List<string> listmensaje = new List<string>();
         public Formulario3()
         {
             InitializeComponent();
         }
+
+        private void salirButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void ejecutarButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= 100; i++)
+            {
+                string mensaje;
+                string mensaje2 = i.ToString();
+                if ((i % 3 == 0) && (i % 5 == 0))
+                {
+                    mensaje = mensaje2 + " " + nombreTextBox.Text + " " + ApellidoTextBox.Text;
+                }
+                else if(i % 3 == 0)
+                {
+                    mensaje = " " + mensaje2 + " " + nombreTextBox.Text;
+                }else if(i % 5 == 0)
+                {
+                    mensaje = " " + mensaje2 + " " + ApellidoTextBox.Text;
+                }             
+                else
+                {
+                    mensaje = " " + mensaje2;
+                }
+                
+                listmensaje.Add(mensaje);
+                listBox1.DataSource = null;
+                listBox1.DataSource = listmensaje;
+            }
+        }
+        
     }
 }

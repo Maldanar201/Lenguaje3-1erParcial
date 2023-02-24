@@ -35,11 +35,14 @@ namespace ManuelAldana
         private async void listarDatos()
         {
             int renglon = ProductosDataGridView.Rows.Add();
-
+            int renglon2 = ProductosDataGridView.Rows.Add();
             ProductosDataGridView.Rows[renglon].Cells[0].Value = NombreTextBox.Text;
             ProductosDataGridView.Rows[renglon].Cells[1].Value = PrecioTextBox.Text;
+            ProductosDataGridView.Rows[renglon2].Cells[0].Value = NombreTextBox2.Text;
+            ProductosDataGridView.Rows[renglon2].Cells[1].Value = PrecioTextBox2.Text;
             SumarColumna();
             LimpiarControles();
+            NombreTextBox.Focus();
         }
         private async void SumarColumna ()
         {
@@ -63,6 +66,8 @@ namespace ManuelAldana
         {
             NombreTextBox.Clear();
             PrecioTextBox.Clear();
+            NombreTextBox2.Clear();
+            PrecioTextBox2.Clear();
         }              
 
     }

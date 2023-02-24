@@ -41,6 +41,10 @@
             this.ProductosDataGridView = new System.Windows.Forms.DataGridView();
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioTextBox2 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.NombreTextBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ProductosDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +66,7 @@
             // 
             // agragarButton
             // 
-            this.agragarButton.Location = new System.Drawing.Point(119, 64);
+            this.agragarButton.Location = new System.Drawing.Point(119, 166);
             this.agragarButton.Name = "agragarButton";
             this.agragarButton.Size = new System.Drawing.Size(100, 27);
             this.agragarButton.TabIndex = 2;
@@ -83,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 159);
+            this.label2.Location = new System.Drawing.Point(21, 269);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 6;
@@ -91,14 +95,14 @@
             // 
             // DescuentoTextBox
             // 
-            this.DescuentoTextBox.Location = new System.Drawing.Point(129, 156);
+            this.DescuentoTextBox.Location = new System.Drawing.Point(119, 266);
             this.DescuentoTextBox.Name = "DescuentoTextBox";
             this.DescuentoTextBox.Size = new System.Drawing.Size(100, 20);
             this.DescuentoTextBox.TabIndex = 7;
             // 
             // TotaltextBox
             // 
-            this.TotaltextBox.Location = new System.Drawing.Point(129, 204);
+            this.TotaltextBox.Location = new System.Drawing.Point(119, 314);
             this.TotaltextBox.Name = "TotaltextBox";
             this.TotaltextBox.Size = new System.Drawing.Size(100, 20);
             this.TotaltextBox.TabIndex = 9;
@@ -106,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 207);
+            this.label3.Location = new System.Drawing.Point(21, 317);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 13);
             this.label3.TabIndex = 8;
@@ -149,11 +153,47 @@
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             // 
+            // PrecioTextBox2
+            // 
+            this.PrecioTextBox2.Location = new System.Drawing.Point(119, 102);
+            this.PrecioTextBox2.Name = "PrecioTextBox2";
+            this.PrecioTextBox2.Size = new System.Drawing.Size(100, 20);
+            this.PrecioTextBox2.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(22, 105);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Precio Producto : ";
+            // 
+            // NombreTextBox2
+            // 
+            this.NombreTextBox2.Location = new System.Drawing.Point(119, 76);
+            this.NombreTextBox2.Name = "NombreTextBox2";
+            this.NombreTextBox2.Size = new System.Drawing.Size(100, 20);
+            this.NombreTextBox2.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(99, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Nombre Producto : ";
+            // 
             // Descuento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 447);
+            this.Controls.Add(this.PrecioTextBox2);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.NombreTextBox2);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.ProductosDataGridView);
             this.Controls.Add(this.PrecioTextBox);
             this.Controls.Add(this.label4);
@@ -189,5 +229,9 @@
         private System.Windows.Forms.DataGridView ProductosDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.TextBox PrecioTextBox2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox NombreTextBox2;
+        private System.Windows.Forms.Label label6;
     }
 }

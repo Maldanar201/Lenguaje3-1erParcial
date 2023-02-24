@@ -40,35 +40,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 160);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(26, 153);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 13);
+            this.label1.Size = new System.Drawing.Size(278, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Valor Depositado :  L. 200,000.00";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 186);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(26, 179);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(150, 13);
+            this.label2.Size = new System.Drawing.Size(254, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Interes a ganar :  1.5 mensual.";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 212);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(26, 205);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
+            this.label3.Size = new System.Drawing.Size(169, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Tiempo : 12 Meses. ";
             // 
             // calcularButton
             // 
-            this.calcularButton.Location = new System.Drawing.Point(159, 269);
+            this.calcularButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calcularButton.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.calcularButton.Location = new System.Drawing.Point(30, 269);
             this.calcularButton.Name = "calcularButton";
-            this.calcularButton.Size = new System.Drawing.Size(100, 39);
+            this.calcularButton.Size = new System.Drawing.Size(229, 39);
             this.calcularButton.TabIndex = 6;
             this.calcularButton.Text = "Calcular";
             this.calcularButton.UseVisualStyleBackColor = true;
@@ -76,9 +81,11 @@
             // 
             // SalirButton
             // 
-            this.SalirButton.Location = new System.Drawing.Point(159, 357);
+            this.SalirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalirButton.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.SalirButton.Location = new System.Drawing.Point(30, 357);
             this.SalirButton.Name = "SalirButton";
-            this.SalirButton.Size = new System.Drawing.Size(100, 39);
+            this.SalirButton.Size = new System.Drawing.Size(229, 39);
             this.SalirButton.TabIndex = 8;
             this.SalirButton.Text = "Salir";
             this.SalirButton.UseVisualStyleBackColor = true;
@@ -86,19 +93,22 @@
             // 
             // listBox1
             // 
+            this.listBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 18;
             this.listBox1.Location = new System.Drawing.Point(310, 6);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(299, 446);
+            this.listBox1.Size = new System.Drawing.Size(299, 434);
             this.listBox1.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 68);
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(278, 25);
+            this.label4.Size = new System.Drawing.Size(292, 30);
             this.label4.TabIndex = 10;
             this.label4.Text = "Calcular Intereses Ganados";
             // 

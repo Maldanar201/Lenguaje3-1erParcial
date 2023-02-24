@@ -33,8 +33,8 @@
             this.ApellidoTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ejecutarButton = new System.Windows.Forms.Button();
-            this.RegresarButton = new System.Windows.Forms.Button();
             this.salirButton = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -73,19 +73,11 @@
             // 
             this.ejecutarButton.Location = new System.Drawing.Point(142, 104);
             this.ejecutarButton.Name = "ejecutarButton";
-            this.ejecutarButton.Size = new System.Drawing.Size(126, 26);
+            this.ejecutarButton.Size = new System.Drawing.Size(220, 26);
             this.ejecutarButton.TabIndex = 4;
             this.ejecutarButton.Text = "Ejecutar";
             this.ejecutarButton.UseVisualStyleBackColor = true;
-            // 
-            // RegresarButton
-            // 
-            this.RegresarButton.Location = new System.Drawing.Point(37, 166);
-            this.RegresarButton.Name = "RegresarButton";
-            this.RegresarButton.Size = new System.Drawing.Size(126, 26);
-            this.RegresarButton.TabIndex = 5;
-            this.RegresarButton.Text = "Regresar";
-            this.RegresarButton.UseVisualStyleBackColor = true;
+            this.ejecutarButton.Click += new System.EventHandler(this.ejecutarButton_Click);
             // 
             // salirButton
             // 
@@ -95,14 +87,23 @@
             this.salirButton.TabIndex = 6;
             this.salirButton.Text = "Salir";
             this.salirButton.UseVisualStyleBackColor = true;
+            this.salirButton.Click += new System.EventHandler(this.salirButton_Click);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(378, 26);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(306, 186);
+            this.listBox1.TabIndex = 7;
             // 
             // Formulario3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 218);
+            this.ClientSize = new System.Drawing.Size(696, 218);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.salirButton);
-            this.Controls.Add(this.RegresarButton);
             this.Controls.Add(this.ejecutarButton);
             this.Controls.Add(this.ApellidoTextBox);
             this.Controls.Add(this.label2);
@@ -123,7 +124,7 @@
         private System.Windows.Forms.TextBox ApellidoTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button ejecutarButton;
-        private System.Windows.Forms.Button RegresarButton;
         private System.Windows.Forms.Button salirButton;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

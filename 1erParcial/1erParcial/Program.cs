@@ -16,7 +16,7 @@ namespace _1erParcial
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ejercicio9());
+            Application.Run(new Ejercicio8());
         }
     }
 }

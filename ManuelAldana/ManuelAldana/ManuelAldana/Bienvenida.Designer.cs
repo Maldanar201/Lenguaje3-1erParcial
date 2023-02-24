@@ -38,10 +38,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(153, 9);
+            this.label1.Font = new System.Drawing.Font("Ravie", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label1.Location = new System.Drawing.Point(38, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 25);
+            this.label1.Size = new System.Drawing.Size(393, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "Hola Bienvenido";
             // 
@@ -49,7 +50,7 @@
             // 
             this.interesesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.interesesButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.interesesButton.Location = new System.Drawing.Point(6, 78);
+            this.interesesButton.Location = new System.Drawing.Point(6, 94);
             this.interesesButton.Name = "interesesButton";
             this.interesesButton.Size = new System.Drawing.Size(146, 73);
             this.interesesButton.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.desceuntoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desceuntoButton.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.desceuntoButton.Location = new System.Drawing.Point(158, 78);
+            this.desceuntoButton.Location = new System.Drawing.Point(158, 94);
             this.desceuntoButton.Name = "desceuntoButton";
             this.desceuntoButton.Size = new System.Drawing.Size(146, 73);
             this.desceuntoButton.TabIndex = 2;
@@ -73,7 +74,7 @@
             // 
             this.formulario3Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.formulario3Button.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.formulario3Button.Location = new System.Drawing.Point(310, 78);
+            this.formulario3Button.Location = new System.Drawing.Point(310, 94);
             this.formulario3Button.Name = "formulario3Button";
             this.formulario3Button.Size = new System.Drawing.Size(146, 73);
             this.formulario3Button.TabIndex = 3;
@@ -84,12 +85,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(165, 44);
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(138, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 16);
+            this.label2.Size = new System.Drawing.Size(194, 23);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Que desea hacer Hoy!!";
+            this.label2.Text = "¡¡Que desea hacer Hoy!!";
             // 
             // Bienvenida
             // 
