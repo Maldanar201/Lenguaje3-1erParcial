@@ -17,6 +17,27 @@ namespace ManuelAldana
             InitializeComponent();
         }
 
+        private void interesesButton_Click(object sender, EventArgs e)
+        {
+            
+            Interes interesFormulario = new Interes();
+            interesFormulario.Show();
+            
+        }
+
+        private void desceuntoButton_Click(object sender, EventArgs e)
+        {
+           
+            Descuento descuentoFormulario = new Descuento();
+            descuentoFormulario.Show();
+        }
+
+        private void formulario3Button_Click(object sender, EventArgs e)
+        {
+            
+            Formulario3 formulario3 = new Formulario3();
+            formulario3.Show();
+        }
         
     }
 }

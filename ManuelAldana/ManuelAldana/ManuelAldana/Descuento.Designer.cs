@@ -139,6 +139,7 @@
             this.Controls.Add(this.PrecioTextBox);
             this.Controls.Add(this.label1);
             this.Name = "Descuento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Descuento";
             this.ResumeLayout(false);
             this.PerformLayout();

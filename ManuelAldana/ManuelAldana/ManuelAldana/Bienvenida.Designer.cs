@@ -55,6 +55,7 @@
             this.interesesButton.TabIndex = 1;
             this.interesesButton.Text = "Calcular interes";
             this.interesesButton.UseVisualStyleBackColor = true;
+            this.interesesButton.Click += new System.EventHandler(this.interesesButton_Click);
             // 
             // desceuntoButton
             // 
@@ -66,6 +67,7 @@
             this.desceuntoButton.TabIndex = 2;
             this.desceuntoButton.Text = "Calcular Descuento";
             this.desceuntoButton.UseVisualStyleBackColor = true;
+            this.desceuntoButton.Click += new System.EventHandler(this.desceuntoButton_Click);
             // 
             // formulario3Button
             // 
@@ -77,6 +79,7 @@
             this.formulario3Button.TabIndex = 3;
             this.formulario3Button.Text = "Funcion Nombre";
             this.formulario3Button.UseVisualStyleBackColor = true;
+            this.formulario3Button.Click += new System.EventHandler(this.formulario3Button_Click);
             // 
             // label2
             // 
@@ -99,6 +102,7 @@
             this.Controls.Add(this.interesesButton);
             this.Controls.Add(this.label1);
             this.Name = "Bienvenida";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manuel Aldana";
             this.ResumeLayout(false);
             this.PerformLayout();

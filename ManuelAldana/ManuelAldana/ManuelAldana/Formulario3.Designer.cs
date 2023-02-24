@@ -109,6 +109,7 @@
             this.Controls.Add(this.nombreTextBox);
             this.Controls.Add(this.label1);
             this.Name = "Formulario3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario3";
             this.ResumeLayout(false);
             this.PerformLayout();

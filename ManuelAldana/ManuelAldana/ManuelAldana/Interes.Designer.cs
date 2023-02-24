@@ -97,6 +97,7 @@
             this.calcularButton.TabIndex = 6;
             this.calcularButton.Text = "Calcular";
             this.calcularButton.UseVisualStyleBackColor = true;
+            this.calcularButton.Click += new System.EventHandler(this.calcularButton_Click);
             // 
             // regresarButton
             // 
@@ -106,6 +107,7 @@
             this.regresarButton.TabIndex = 7;
             this.regresarButton.Text = "regresar";
             this.regresarButton.UseVisualStyleBackColor = true;
+            this.regresarButton.Click += new System.EventHandler(this.regresarButton_Click);
             // 
             // SalirButton
             // 
@@ -115,6 +117,7 @@
             this.SalirButton.TabIndex = 8;
             this.SalirButton.Text = "Salir";
             this.SalirButton.UseVisualStyleBackColor = true;
+            this.SalirButton.Click += new System.EventHandler(this.SalirButton_Click);
             // 
             // listBox1
             // 
@@ -151,6 +154,7 @@
             this.Controls.Add(this.ValorTextBox);
             this.Controls.Add(this.label1);
             this.Name = "Interes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Interes";
             this.ResumeLayout(false);
             this.PerformLayout();
