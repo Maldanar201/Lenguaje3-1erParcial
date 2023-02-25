@@ -35,8 +35,9 @@ namespace ManuelAldana
             {
                 errorProvider1.SetError(ApellidoTextBox, " Ingrese un Producto");
                 return;
-            }
+            }            
             errorProvider1.Clear();
+            
             for (int i = 0; i <= 100; i++)
             {
                 string mensaje;

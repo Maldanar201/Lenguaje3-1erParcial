@@ -36,12 +36,20 @@ namespace ManuelAldana
             {
                 errorProvider1.SetError(NombreTextBox2, " Ingrese un Producto");
                 return;
+            }           
+            if(PrecioTextBox.Text == string.Empty)
+            {
+                errorProvider1.SetError(PrecioTextBox, " Ingrese un Producto");
+                return;
+            }
+            if (PrecioTextBox2.Text == string.Empty)
+            {
+                errorProvider1.SetError(PrecioTextBox2, " Ingrese un Producto");
+                return;
             }
             errorProvider1.Clear();
-
-            listarDatos();                  
-                       
-            
+            listarDatos();                 
+                  
         }
 
         private async void listarDatos()
