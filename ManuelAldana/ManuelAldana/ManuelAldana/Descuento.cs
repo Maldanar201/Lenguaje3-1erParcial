@@ -26,7 +26,19 @@ namespace ManuelAldana
                 
         private async void agragarButton_Click(object sender, EventArgs e)
         {
-            
+            if(NombreTextBox.Text == string.Empty) 
+            {
+                errorProvider1.SetError(NombreTextBox, " Ingrese un Producto");
+                return;
+            }
+           
+            if (NombreTextBox2.Text == string.Empty)
+            {
+                errorProvider1.SetError(NombreTextBox2, " Ingrese un Producto");
+                return;
+            }
+            errorProvider1.Clear();
+
             listarDatos();                  
                        
             
@@ -68,7 +80,24 @@ namespace ManuelAldana
             PrecioTextBox.Clear();
             NombreTextBox2.Clear();
             PrecioTextBox2.Clear();
-        }              
+        }
 
+        private void PrecioTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(PrecioTextBox.Text, "[^0-9,.]"))
+            {
+                MessageBox.Show("Por Favor Ingrese un valor Numerico.");
+                PrecioTextBox.Text = PrecioTextBox.Text.Remove(PrecioTextBox.Text.Length - 1);
+            }
+        }
+
+        private void PrecioTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(PrecioTextBox2.Text, "[^0-9,.]"))
+            {
+                MessageBox.Show("Por Favor Ingrese un valor Numerico.");
+                PrecioTextBox2.Text = PrecioTextBox2.Text.Remove(PrecioTextBox2.Text.Length - 1);
+            }
+        }
     }
 }

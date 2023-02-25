@@ -25,6 +25,18 @@ namespace ManuelAldana
 
         private void ejecutarButton_Click(object sender, EventArgs e)
         {
+            if (nombreTextBox.Text == string.Empty)
+            {
+                errorProvider1.SetError(nombreTextBox, " Ingrese un Producto");
+                return;
+            }
+
+            if (ApellidoTextBox.Text == string.Empty)
+            {
+                errorProvider1.SetError(ApellidoTextBox, " Ingrese un Producto");
+                return;
+            }
+            errorProvider1.Clear();
             for (int i = 0; i <= 100; i++)
             {
                 string mensaje;

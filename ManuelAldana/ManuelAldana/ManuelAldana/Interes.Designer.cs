@@ -101,6 +101,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(299, 434);
             this.listBox1.TabIndex = 9;
+            this.listBox1.TabStop = false;
             // 
             // label4
             // 
@@ -127,6 +128,7 @@
             this.Name = "Interes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Interes";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
