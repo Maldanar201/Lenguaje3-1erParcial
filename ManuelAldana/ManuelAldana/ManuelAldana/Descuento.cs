@@ -39,12 +39,12 @@ namespace ManuelAldana
             }           
             if(PrecioTextBox.Text == string.Empty)
             {
-                errorProvider1.SetError(PrecioTextBox, " Ingrese un Producto");
+                errorProvider1.SetError(PrecioTextBox, " Ingrese el Precio del Producto");
                 return;
             }
             if (PrecioTextBox2.Text == string.Empty)
             {
-                errorProvider1.SetError(PrecioTextBox2, " Ingrese un Producto");
+                errorProvider1.SetError(PrecioTextBox2, " Ingrese el Precio del Producto");
                 return;
             }
             errorProvider1.Clear();
