@@ -83,7 +83,7 @@
             // 
             this.Aceptarbutton.Image = global::Vista.Properties.Resources.comprobado;
             this.Aceptarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Aceptarbutton.Location = new System.Drawing.Point(33, 92);
+            this.Aceptarbutton.Location = new System.Drawing.Point(12, 95);
             this.Aceptarbutton.Name = "Aceptarbutton";
             this.Aceptarbutton.Size = new System.Drawing.Size(126, 39);
             this.Aceptarbutton.TabIndex = 4;
@@ -97,7 +97,7 @@
             this.Cancelarbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.Cancelarbutton.Image = global::Vista.Properties.Resources.cancelar;
             this.Cancelarbutton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Cancelarbutton.Location = new System.Drawing.Point(198, 92);
+            this.Cancelarbutton.Location = new System.Drawing.Point(198, 95);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(126, 39);
             this.Cancelarbutton.TabIndex = 5;
@@ -120,9 +120,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox1.Image = global::Vista.Properties.Resources.usuario;
-            this.pictureBox1.Location = new System.Drawing.Point(364, 15);
+            this.pictureBox1.Location = new System.Drawing.Point(364, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(112, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(112, 122);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
