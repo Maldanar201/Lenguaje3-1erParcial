@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datos;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +43,10 @@ namespace Vista
             errorProvider1.Clear();
 
             // VALIDAR EN LA BASE DE DATOS
+
+            login login = new login();
+            Usuarios usuario = new Usuarios();
+            UsuariosDB
 
             //MOSTRAR EL MENU
             menu menuFormularios = new menu();
