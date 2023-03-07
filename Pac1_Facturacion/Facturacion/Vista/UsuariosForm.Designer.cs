@@ -182,7 +182,6 @@
             // 
             // EliminarButton
             // 
-            this.EliminarButton.Enabled = false;
             this.EliminarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EliminarButton.Image = global::Vista.Properties.Resources.eliminar;
             this.EliminarButton.Location = new System.Drawing.Point(318, 201);
@@ -192,6 +191,7 @@
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // GuardarButton
             // 

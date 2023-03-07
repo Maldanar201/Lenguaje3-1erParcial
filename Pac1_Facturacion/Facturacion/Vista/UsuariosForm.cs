@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -144,6 +145,33 @@ namespace Vista
             }
             else if(TipoOperacion == "Modificar") // se habilita cuando se modifica informacion ya ingresada
             {
+                //asigna  valores capturados a la variable user
+                user.CodigoUsuario = CodigoTextBox.Text;
+                user.Nombre = UsuarioTextBox.Text;
+                user.Contraseña = ContraseñaTextBox.Text;
+                user.Correo = CorreoTextBox.Text;
+                user.Rol = RolComboBox.Text;
+                user.EstaActivo = EstaActivoCheckBox.Checked;
+
+                if (FotopictureBox.Image != null) // si pictureBox no esta vacio
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream(); // captura y combierte el string a una imagen, o a otro archivo segun necesitemos
+                    FotopictureBox.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);// al imagen del pictubox se la asigna a la variable ms en el formato elegido
+                    user.Fotos = ms.GetBuffer(); // asigna el arreglo de byte a la variable de la clase usuarios
+                }
+
+                bool modifico = usuarioDB.Editar(user); // asigna el contenido de user de la variable usuarioDB a modifico
+                if(modifico)
+                {
+                    limpiarControles();
+                    deshabilitarControles();
+                    TraerUsuarios();
+                    MessageBox.Show(" Se Actualizo el Registro correctamente ");
+                }
+                else
+                {
+                    MessageBox.Show(" NO Se pudo Actualizar el Registro ");
+                }
 
             }
         }
@@ -152,6 +180,30 @@ namespace Vista
         private void Modificarbutton_Click(object sender, EventArgs e)
         {
             TipoOperacion = "Modificar"; // asigna valor a la variable para saber que hacer en boton guardar
+            if(UsuariosDataGridView.SelectedRows.Count > 0) // Si el usuario seleciona una fila 
+            {
+                CodigoTextBox.Text = UsuariosDataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString();
+                UsuarioTextBox.Text = UsuariosDataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
+                ContraseñaTextBox.Text = UsuariosDataGridView.CurrentRow.Cells["Contrasena"].Value.ToString();                
+                CorreoTextBox.Text = UsuariosDataGridView.CurrentRow.Cells["Correo"].Value.ToString();
+                RolComboBox.Text = UsuariosDataGridView.CurrentRow.Cells["Rol"].Value.ToString();
+                EstaActivoCheckBox.Checked = Convert.ToBoolean(UsuariosDataGridView.CurrentRow.Cells["EstaActivo"].Value);
+               
+                //Asigna a la variable mifoto el contenido de la celda Foto del codigo de usuario selecionado
+                byte[] mifoto = usuarioDB.DevolverFoto(UsuariosDataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString());
+               
+                if(mifoto.Length> 0) // si mifoto contiene datos
+                {
+                    MemoryStream ms = new MemoryStream(mifoto); // crea un memory stream
+                    FotopictureBox.Image = System.Drawing.Bitmap.FromStream(ms); // asigna el memory estream al picturebox
+                }
+                
+                habilitarControles();
+            }
+            else
+            {
+
+            }
         }
 
         private void AdjuntarFotobutton_Click(object sender, EventArgs e)
@@ -175,6 +227,35 @@ namespace Vista
             dt = usuarioDB.DevolverUsuario();
 
             UsuariosDataGridView.DataSource = dt;
+        }
+
+        private void EliminarButton_Click(object sender, EventArgs e)
+        {
+            if(UsuariosDataGridView.SelectedRows.Count > 0)
+            {
+                //Valida si esta seguro de eliminar el registro
+                DialogResult resultado = MessageBox.Show(" Esta seguro de eliminar el registro ", " ADVERTENCIA ", MessageBoxButtons.YesNo);
+                if(resultado == DialogResult.Yes) // si afirma la eliminacion procede
+                {
+                    // valida el codigo selecionado para eliminarlo
+                    bool elimino = usuarioDB.Eliminar(UsuariosDataGridView.CurrentRow.Cells["CodigoUsuario"].Value.ToString());
+                    if (elimino)
+                    {
+                        limpiarControles();
+                        deshabilitarControles();
+                        TraerUsuarios(); // actualiza la BD y el datagrid de pantalla
+                        MessageBox.Show(" Registro Eliminado");
+                    }
+                    else
+                    {
+                        MessageBox.Show(" El Registro NO se pudo eliminar ");
+                    }
+                }               
+            }
+            else 
+            {
+                MessageBox.Show(" Debe Seleccionar un Registro ");
+            }
         }
     }
 }
