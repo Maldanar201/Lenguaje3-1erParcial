@@ -44,15 +44,30 @@ namespace Vista
 
             // VALIDAR EN LA BASE DE DATOS
 
-            Login login = new Login(UsuarioTextBox.Text, ContraseñaTextBox.Text);
-            Usuarios usuario = new Usuarios();
-            UsuariosDB usuarioDB = new UsuariosDB();
+            Login login = new Login( UsuarioTextBox.Text, ContraseñaTextBox.Text); // abre una nueva sesion con la informacion del textbox
+            Usuarios usuario = new Usuarios(); //instancia un  nuevo usuario del objeto usuario
+            UsuariosDB usuarioDB = new UsuariosDB();// instancia un nuevo usuario en la base de datos
 
+            usuario = usuarioDB.Autentificar(login); // asigna el valor de suarioDB a el objeto usuario auntenticando si existe con el metodo login
 
-            //MOSTRAR EL MENU
-            menu menuFormularios = new menu();
-            Hide();
-            menuFormularios.Show();
+            if(usuario != null) // si el usuario no esta vacio
+            {
+                if (usuario.EstaActivo)
+                {
+                    //MOSTRAR EL MENU
+                    menu menuFormularios = new menu(); // instancia un nuevo menu de formulario
+                    Hide(); // oculta la ventana de logueo
+                    menuFormularios.Show(); // muestra la ventana del menu de formularios
+                }
+                else
+                {
+                    MessageBox.Show( " El Usuario NO esta Activo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else 
+            {
+                MessageBox.Show(" El Usuario ó Contraseña son incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
