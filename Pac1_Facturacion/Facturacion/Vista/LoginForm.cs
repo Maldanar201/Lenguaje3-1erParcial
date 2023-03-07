@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Vista
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -44,9 +44,10 @@ namespace Vista
 
             // VALIDAR EN LA BASE DE DATOS
 
-            login login = new login();
+            Login login = new Login(UsuarioTextBox.Text, ContraseñaTextBox.Text);
             Usuarios usuario = new Usuarios();
-            UsuariosDB
+            UsuariosDB usuarioDB = new UsuariosDB();
+
 
             //MOSTRAR EL MENU
             menu menuFormularios = new menu();

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class login
+    public class Login
     {
-        public string codigoUsuario { get; set; }
-        public string clave { get; set; }
-        public string rol { get; set; }
+        public string CodigoUsuario { get; set; }
+        public string Clave { get; set; }
+       
 
-        public login() { }
+        public Login() { }
 
-        public login(string codigoUsuario, string clave, string rol)
+        public Login(string codigoUsuario, string clave)
         {
-            this.codigoUsuario = codigoUsuario;
-            this.clave = clave;
-            this.rol = rol;
+            this.CodigoUsuario = codigoUsuario;
+            this.Clave = clave;
+            
         }
     }
 }
