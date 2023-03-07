@@ -1,4 +1,5 @@
-﻿using Entidades;
+﻿using Datos;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,11 @@ namespace Vista
             InitializeComponent();
         }
 
-        string TipoOperacion; // variable global para boton gurdar
-       
+        string TipoOperacion; // variable global para boton guardar
+        DataTable dt = new DataTable(); // inicia la clase DateTable
+        UsuariosDB usuarioDB = new UsuariosDB(); // instancia la clase Usuarios de la base de datos        
+        Usuarios user = new Usuarios();// instancia la clase usuarios
+
         // Metodos de apoyo para habilitar y deshabilitar controles, lipiar controles
         private void habilitarControles()
         {
@@ -30,6 +34,7 @@ namespace Vista
             AdjuntarFotobutton.Enabled = true;
             GuardarButton.Enabled = true;
             CancelarButton.Enabled = true;
+            Modificarbutton.Enabled = false;
         }
         private void deshabilitarControles()
         {
@@ -42,6 +47,7 @@ namespace Vista
             AdjuntarFotobutton.Enabled = false;
             GuardarButton.Enabled = false;
             CancelarButton.Enabled = false;
+            Modificarbutton.Enabled = true;
         }
 
         private void limpiarControles()
@@ -103,10 +109,7 @@ namespace Vista
                     RolComboBox.Focus();
                     return;
                 }
-                errorProvider1.Clear();
-
-                // instancia la clase usuarios
-                Usuarios user = new Usuarios();
+                errorProvider1.Clear();                
                 
                 // asigna valores capturados a las variables de la clase usuarios
                 user.CodigoUsuario = CodigoTextBox.Text;
@@ -122,8 +125,21 @@ namespace Vista
                     FotopictureBox.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);// al imagen del pictubox se la asigna a la variable ms en el formato elegido
                     user.Fotos = ms.GetBuffer(); // asigna el arreglo de byte a la variable de la clase usuarios
                 }
-                
+
                 // INSERTAR EN LA BASE DE DATOS
+                bool inserto = usuarioDB.Insertar(user);// valida si user trae datos y los asigna en la variable inserto
+
+                if(inserto)
+                {
+                    limpiarControles();
+                    deshabilitarControles();
+                    TraerUsuarios();
+                    MessageBox.Show(" Registro Guardado ");
+                }
+                else 
+                {
+                    MessageBox.Show(" No Se Pudo Guardar el Registro ");
+                }
 
             }
             else if(TipoOperacion == "Modificar") // se habilita cuando se modifica informacion ya ingresada
@@ -147,6 +163,18 @@ namespace Vista
             {
                 FotopictureBox.Image = Image.FromFile( dialog.FileName); // asigna la imagen en el pictureBox
             }
+        }
+
+        private void UsuariosForm_Load(object sender, EventArgs e)
+        {
+            TraerUsuarios();
+        }
+
+        private void TraerUsuarios()
+        {
+            dt = usuarioDB.DevolverUsuario();
+
+            UsuariosDataGridView.DataSource = dt;
         }
     }
 }

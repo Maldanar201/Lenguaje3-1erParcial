@@ -209,7 +209,6 @@
             // 
             // Modificarbutton
             // 
-            this.Modificarbutton.Enabled = false;
             this.Modificarbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modificarbutton.Image = global::Vista.Properties.Resources.modificar;
             this.Modificarbutton.Location = new System.Drawing.Point(114, 201);
@@ -260,6 +259,8 @@
             // 
             // UsuariosDataGridView
             // 
+            this.UsuariosDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.UsuariosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UsuariosDataGridView.Location = new System.Drawing.Point(-2, 241);
             this.UsuariosDataGridView.Name = "UsuariosDataGridView";
@@ -298,6 +299,7 @@
             this.Controls.Add(this.label1);
             this.Name = "UsuariosForm";
             this.Text = "Usuarios";
+            this.Load += new System.EventHandler(this.UsuariosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.FotopictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsuariosDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

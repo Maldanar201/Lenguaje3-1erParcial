@@ -9,15 +9,15 @@ namespace Entidades
     public class Login
     {
         public string CodigoUsuario { get; set; }
-        public string Clave { get; set; }
+        public string Contrasena { get; set; }
        
 
         public Login() { }
 
-        public Login(string codigoUsuario, string clave)
+        public Login(string codigoUsuario, string contrasena)
         {
             this.CodigoUsuario = codigoUsuario;
-            this.Clave = clave;
+            this.Contrasena = contrasena;
             
         }
     }
