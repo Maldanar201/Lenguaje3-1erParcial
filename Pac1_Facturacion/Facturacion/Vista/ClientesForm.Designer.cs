@@ -51,7 +51,7 @@
             // EstaActivoChekbox
             // 
             this.EstaActivoChekbox.AutoSize = true;
-            this.EstaActivoChekbox.Location = new System.Drawing.Point(455, 141);
+            this.EstaActivoChekbox.Location = new System.Drawing.Point(437, 145);
             this.EstaActivoChekbox.Name = "EstaActivoChekbox";
             this.EstaActivoChekbox.Size = new System.Drawing.Size(80, 17);
             this.EstaActivoChekbox.TabIndex = 39;
@@ -141,7 +141,7 @@
             // telefonoTextBox
             // 
             this.telefonoTextBox.Enabled = false;
-            this.telefonoTextBox.Location = new System.Drawing.Point(109, 137);
+            this.telefonoTextBox.Location = new System.Drawing.Point(109, 141);
             this.telefonoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.telefonoTextBox.Name = "telefonoTextBox";
             this.telefonoTextBox.Size = new System.Drawing.Size(320, 20);
@@ -151,7 +151,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 140);
+            this.label5.Location = new System.Drawing.Point(15, 145);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
@@ -231,7 +231,7 @@
             this.NuevoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NuevoButton.UseVisualStyleBackColor = true;
             // 
-            // Clientes
+            // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -253,7 +253,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CodigoTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "Clientes";
+            this.Name = "ClientesForm";
             this.Text = "Clientes";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
