@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Datos;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,6 +19,9 @@ namespace Vista
         }
 
         string TipoOperacion;
+        Producto producto;
+        ProductoDB productoDB = new ProductoDB();
+        
         private void habilitarControles()
         {
             CodigoTextBox.Enabled = true;
@@ -46,6 +52,9 @@ namespace Vista
             DescripcionTextBox.Clear();
             ExistenciaTextBox.Clear();
             PrecioTextBox.Clear();
+            EstaActivoChekbox.Checked = false;
+            FotoProductopictureBox.Image = null;
+            producto = null;
         }
 
         private void NuevoButton_Click(object sender, EventArgs e)
@@ -64,11 +73,47 @@ namespace Vista
         private void Modificarbutton_Click(object sender, EventArgs e)
         {
             TipoOperacion = "Modificar"; // asigna valor a la variable para saber que hacer en boton guardar
+            if(ProductosDataGridView.SelectedRows.Count > 0)
+            {
+                CodigoTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString();
+                DescripcionTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Descripcion"].Value.ToString();
+                ExistenciaTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Existencia"].Value.ToString();
+                PrecioTextBox.Text = ProductosDataGridView.CurrentRow.Cells["Precio"].Value.ToString();
+                EstaActivoChekbox.Checked = Convert.ToBoolean(ProductosDataGridView.CurrentRow.Cells["EstaActivo"].Value);
+
+                byte[] img = productoDB.DevolverFoto(ProductosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString());
+
+                if(img.Length > 0)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    FotoProductopictureBox.Image = System.Drawing.Bitmap.FromStream(ms);
+                }
+                habilitarControles();
+                CodigoTextBox.ReadOnly = true;
+            }
+            else
+            {
+                MessageBox.Show(" Debe seleccionar un Registro", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void GuardarButton_Click(object sender, EventArgs e)
         {
-            if(TipoOperacion == "Nuevo")
+            producto = new Producto();
+            producto.Codigo = CodigoTextBox.Text;
+            producto.Decripcion = DescripcionTextBox.Text;
+            producto.Existencia = Convert.ToInt32(ExistenciaTextBox.Text);
+            producto.Precio = Convert.ToDecimal(PrecioTextBox.Text);
+            producto.EstaActivo = EstaActivoChekbox.Checked;
+
+            if (FotoProductopictureBox.Image != null) // si pictureBox no esta vacio
+            {
+                System.IO.MemoryStream ms = new System.IO.MemoryStream(); // captura y combierte el string a una imagen, o a otro archivo segun necesitemos
+                FotoProductopictureBox.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);// al imagen del pictubox se la asigna a la variable ms en el formato elegido
+                producto.imagenProducto = ms.GetBuffer(); // asigna el arreglo de byte a la variable de la clase usuarios
+            }
+
+            if (TipoOperacion == "Nuevo")
             {
                 if (string.IsNullOrEmpty(CodigoTextBox.Text)) // si el texbox esta nulo o vacio 
                 {
@@ -100,10 +145,37 @@ namespace Vista
                     PrecioTextBox.Focus();
                     return;
                 }
-                errorProvider1.Clear();
+                errorProvider1.Clear();                
+
+                bool inserto = productoDB.Insertar(producto);
+                if(inserto)
+                {
+                    deshabilitarControles();
+                    limpiarControles();
+                    TraerProductos();
+                    MessageBox.Show(" Registro Guardado con Exito.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else 
+                {
+                    MessageBox.Show(" No se pudo Guardar el Registro.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else if(TipoOperacion == "Modificar")
             {
+                bool modifico = productoDB.Editar(producto);
+                if (modifico)
+                {
+                    CodigoTextBox.ReadOnly = false;
+                    deshabilitarControles();
+                    limpiarControles();
+                    TraerProductos();
+                    MessageBox.Show(" Registro se Actualizo con Exito.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(" No se pudo Actualizar el Registro.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
         }
@@ -119,7 +191,7 @@ namespace Vista
 
         private void PrecioTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsDigit((char)e.KeyChar) && (e.KeyChar != '.')) // si el caracter es diferente de numero y diferente de punto, no los permite
+            if(!char.IsDigit((char)e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '\b')) // si el caracter es diferente de numero y diferente de punto, no los permite
             {
                 e.Handled = true; // si es numero o punto si lo permite
             }
@@ -129,5 +201,56 @@ namespace Vista
                 e.Handled = true;
             }
         }
+
+        private void AdjuntarButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog(); // abre una ventana del explorador del sistema operativo
+            DialogResult resultado = dialog.ShowDialog(); // asigna a la variable y muestra la captura de la imagen en en ella
+
+            if (resultado == DialogResult.OK)
+            {
+                FotoProductopictureBox.Image = Image.FromFile(dialog.FileName); // asigna la imagen en el pictureBox
+            }
+        }
+
+        private void ProductosForm_Load(object sender, EventArgs e)
+        {
+            TraerProductos();
+        }
+
+        private void TraerProductos()
+        {
+            ProductosDataGridView.DataSource = productoDB.DevolverProducto();
+        }
+
+        private void EliminarButton_Click(object sender, EventArgs e)
+        {
+            if (ProductosDataGridView.SelectedRows.Count > 0)
+            {
+                //Valida si esta seguro de eliminar el registro
+                DialogResult resultado = MessageBox.Show(" Esta seguro de eliminar el registro ", " ADVERTENCIA ", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes) // si afirma la eliminacion procede
+                {
+                    // valida el codigo selecionado para eliminarlo
+                    bool elimino = productoDB.Eliminar(ProductosDataGridView.CurrentRow.Cells["Codigo"].Value.ToString());
+                    if (elimino)
+                    {
+                        limpiarControles();
+                        deshabilitarControles();
+                        TraerProductos(); // actualiza la BD y el datagrid de pantalla
+                        MessageBox.Show(" Registro Eliminado");
+                    }
+                    else
+                    {
+                        MessageBox.Show(" El Registro NO se pudo eliminar ");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(" Debe Seleccionar un Registro ");
+            }
+        }
+                
     }
 }

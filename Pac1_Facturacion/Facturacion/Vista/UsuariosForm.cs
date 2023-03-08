@@ -119,6 +119,7 @@ namespace Vista
                 user.Correo = CorreoTextBox.Text;
                 user.Rol = RolComboBox.Text;
                 user.EstaActivo = EstaActivoCheckBox.Checked;
+                user.FechaCreacion = DateTime.Today;
 
                 if(FotopictureBox.Image != null) // si pictureBox no esta vacio
                 {
@@ -199,10 +200,11 @@ namespace Vista
                 }
                 
                 habilitarControles();
+                CodigoTextBox.ReadOnly = true;
             }
             else
             {
-
+                MessageBox.Show(" Debe seleccionar un Registro", "",MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

@@ -13,18 +13,20 @@ namespace Entidades
         public int Existencia { get; set; }
         public decimal Precio { get; set; }
         public byte[] imagenProducto { get; set;}
+        public bool EstaActivo { get; set; }
 
         public Producto()
         {
         }
 
-        public Producto(string codigo, string decripcion, int existencia, decimal precio, byte[] imagenProducto)
+        public Producto(string codigo, string decripcion, int existencia, decimal precio, byte[] imagenProducto, bool estaActivo)
         {
             Codigo = codigo;
             Decripcion = decripcion;
             Existencia = existencia;
             Precio = precio;
             this.imagenProducto = imagenProducto;
+            EstaActivo = estaActivo;
         }
     }
 }
