@@ -14,7 +14,7 @@ namespace Datos
         string cadena = "server=localhost; user=root; database=factura; password=123456;"; // direcion y datos para conectar a la base de datos
 
 
-        public Clientes DevolverClientesPorIdentidad(string identidad)// metodo para leer la base de datos y verla en el formulario clientes
+        public Clientes DevolverClientesPorIdentidad(string identidad)// metodo para leer la base de datos y devolver informacion de cliente atraves de la identidad
         {
             Clientes cliente = null;
             try

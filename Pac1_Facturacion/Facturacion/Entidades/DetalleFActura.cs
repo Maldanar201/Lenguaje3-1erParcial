@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class DetalleFActura
+    public class DetalleFactura
     {
         public int ID { get; set; }
         public int IDfactura {get; set; }
@@ -15,11 +15,11 @@ namespace Entidades
         public int Cantidad { get; set; }
         public decimal Total { get; set; }
 
-        public DetalleFActura()
+        public DetalleFactura()
         {
         }
 
-        public DetalleFActura(int iD, int iDfactura, string codigoProducto, decimal precio, int cantidad, decimal total)
+        public DetalleFactura(int iD, int iDfactura, string codigoProducto, decimal precio, int cantidad, decimal total)
         {
             ID = iD;
             IDfactura = iDfactura;

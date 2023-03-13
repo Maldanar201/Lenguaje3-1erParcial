@@ -29,7 +29,7 @@ namespace Datos
                         //inserta los parametros ingresados en la BD
                         comando.CommandType = CommandType.Text;
                         comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = producto.Codigo;
-                        comando.Parameters.Add("@Descripcion", MySqlDbType.VarChar, 200).Value = producto.Decripcion;
+                        comando.Parameters.Add("@Descripcion", MySqlDbType.VarChar, 200).Value = producto.Descripcion;
                         comando.Parameters.Add("@Existencia", MySqlDbType.Int32).Value = producto.Existencia;
                         comando.Parameters.Add("@Precio", MySqlDbType.Decimal).Value = producto.Precio;                        
                         comando.Parameters.Add("@Foto", MySqlDbType.LongBlob).Value = producto.imagenProducto;                        
@@ -65,7 +65,7 @@ namespace Datos
                         //inserta los parametros ingresados en la BD
                         comando.CommandType = CommandType.Text;
                         comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = producto.Codigo;
-                        comando.Parameters.Add("@Descripcion", MySqlDbType.VarChar, 200).Value = producto.Decripcion;
+                        comando.Parameters.Add("@Descripcion", MySqlDbType.VarChar, 200).Value = producto.Descripcion;
                         comando.Parameters.Add("@Existencia", MySqlDbType.Int32).Value = producto.Existencia;
                         comando.Parameters.Add("@Precio", MySqlDbType.Decimal).Value = producto.Precio;
                         comando.Parameters.Add("@Foto", MySqlDbType.LongBlob).Value = producto.imagenProducto;
@@ -168,5 +168,42 @@ namespace Datos
             }
             return foto;
         }
+
+        public Producto DevolverProductosPorCodigo(string codigo)// metodo para leer la base de datos y devolver un producto por su codigo
+        {
+            Producto producto = null;
+            try
+            {
+                StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
+                sql.Append(" SELECT * FROM producto WHERE Codigo = @Codigo");
+                using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
+                {
+                    _conexion.Open(); //inicia la conexion
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+
+                        if (dr.Read())
+                        {
+                            producto = new Producto();
+
+                            producto.Codigo = codigo;
+                            producto.Descripcion = dr["Descripcion"].ToString();
+                            producto.Existencia = Convert.ToInt32(dr["Existencia"]);
+                            producto.Precio = Convert.ToDecimal(dr["Correo"]);                            
+                            producto.EstaActivo = Convert.ToBoolean(dr["EstaActivo"]);
+                        }
+                    }
+
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+            }
+            return producto;
+        }
+
     }
 }
