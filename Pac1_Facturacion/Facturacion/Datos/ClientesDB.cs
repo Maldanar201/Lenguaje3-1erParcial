@@ -13,6 +13,45 @@ namespace Datos
     {
         string cadena = "server=localhost; user=root; database=factura; password=123456;"; // direcion y datos para conectar a la base de datos
 
+
+        public Clientes DevolverClientesPorIdentidad(string identidad)// metodo para leer la base de datos y verla en el formulario clientes
+        {
+            Clientes cliente = null;
+            try
+            {
+                StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
+                sql.Append(" SELECT * FROM clientes WHERE IDcliente = @IDcliente");
+                using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
+                {
+                    _conexion.Open(); //inicia la conexion
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        
+                        if(dr.Read()) 
+                        {
+                            cliente = new Clientes();
+
+                            cliente.ID = identidad;
+                            cliente.Nombre = dr["Nombre"].ToString();
+                            cliente.Direccion = dr["Direccion"].ToString();
+                            cliente.Correo = dr["Correo"].ToString();
+                            cliente.Telefono = dr["Telefono"].ToString();
+                            cliente.EstaActivo = Convert.ToBoolean(dr["EstaActivo"]);
+                            cliente.FechaNacimiento = Convert.ToDateTime(dr["FechaNacimiento"]);
+                        }
+                    }
+
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+            }
+            return cliente;
+        }
+
         public bool Insertar(Clientes clientes)
         {
             bool inserto = false;

@@ -8,27 +8,27 @@ namespace Entidades
 {
     public class Clientes
     {
-        public string Codigo { get; set; }
+        public string ID { get; set; }
         public string Nombre { get; set; }
-        public string ID { get; set;}
+        public string Correo { get; set;}
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public bool EstaActivo { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaNacimiento { get; set; }
 
         public Clientes()
         {
         }
 
-        public Clientes(string codigo, string nombre, string iD, string direccion, string telefono, bool estaActivo, DateTime fechaCreacion)
+        public Clientes(string iD, string nombre, string correo, string direccion, string telefono, bool estaActivo, DateTime fechaNacimiento)
         {
-            Codigo = codigo;
-            Nombre = nombre;
             ID = iD;
+            Nombre = nombre;
+            Correo = correo;
             Direccion = direccion;
             Telefono = telefono;
             EstaActivo = estaActivo;
-            FechaCreacion = fechaCreacion;
+            FechaNacimiento = fechaNacimiento;
         }
     }
 }

@@ -33,25 +33,27 @@
             this.label4 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.NombreTextBox = new System.Windows.Forms.TextBox();
+            this.FechaNacimientoTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.CodigoTextBox = new System.Windows.Forms.TextBox();
+            this.NombreTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ClientesDataGridView = new System.Windows.Forms.DataGridView();
             this.CancelarButton = new System.Windows.Forms.Button();
             this.EliminarButton = new System.Windows.Forms.Button();
             this.GuardarButton = new System.Windows.Forms.Button();
             this.Modificarbutton = new System.Windows.Forms.Button();
             this.NuevoButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.CorreotextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientesDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // EstaActivoChekbox
             // 
             this.EstaActivoChekbox.AutoSize = true;
-            this.EstaActivoChekbox.Location = new System.Drawing.Point(437, 145);
+            this.EstaActivoChekbox.Location = new System.Drawing.Point(433, 187);
             this.EstaActivoChekbox.Name = "EstaActivoChekbox";
             this.EstaActivoChekbox.Size = new System.Drawing.Size(80, 17);
             this.EstaActivoChekbox.TabIndex = 39;
@@ -61,10 +63,10 @@
             // DireccionTextBox
             // 
             this.DireccionTextBox.Enabled = false;
-            this.DireccionTextBox.Location = new System.Drawing.Point(109, 109);
+            this.DireccionTextBox.Location = new System.Drawing.Point(134, 109);
             this.DireccionTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.DireccionTextBox.Name = "DireccionTextBox";
-            this.DireccionTextBox.Size = new System.Drawing.Size(320, 20);
+            this.DireccionTextBox.Size = new System.Drawing.Size(295, 20);
             this.DireccionTextBox.TabIndex = 33;
             // 
             // label4
@@ -81,10 +83,10 @@
             // idTextBox
             // 
             this.idTextBox.Enabled = false;
-            this.idTextBox.Location = new System.Drawing.Point(109, 77);
+            this.idTextBox.Location = new System.Drawing.Point(134, 77);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(320, 20);
+            this.idTextBox.Size = new System.Drawing.Size(295, 20);
             this.idTextBox.TabIndex = 31;
             // 
             // label3
@@ -94,18 +96,18 @@
             this.label3.Location = new System.Drawing.Point(15, 80);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 30;
-            this.label3.Text = "ID  : ";
+            this.label3.Text = "Identidad  : ";
             // 
-            // NombreTextBox
+            // FechaNacimientoTextBox
             // 
-            this.NombreTextBox.Enabled = false;
-            this.NombreTextBox.Location = new System.Drawing.Point(109, 45);
-            this.NombreTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.NombreTextBox.Name = "NombreTextBox";
-            this.NombreTextBox.Size = new System.Drawing.Size(320, 20);
-            this.NombreTextBox.TabIndex = 29;
+            this.FechaNacimientoTextBox.Enabled = false;
+            this.FechaNacimientoTextBox.Location = new System.Drawing.Point(134, 45);
+            this.FechaNacimientoTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FechaNacimientoTextBox.Name = "FechaNacimientoTextBox";
+            this.FechaNacimientoTextBox.Size = new System.Drawing.Size(295, 20);
+            this.FechaNacimientoTextBox.TabIndex = 29;
             // 
             // label2
             // 
@@ -114,18 +116,18 @@
             this.label2.Location = new System.Drawing.Point(15, 48);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.Size = new System.Drawing.Size(121, 13);
             this.label2.TabIndex = 28;
-            this.label2.Text = "Nombre : ";
+            this.label2.Text = "Fecha Nacimiento : ";
             // 
-            // CodigoTextBox
+            // NombreTextBox
             // 
-            this.CodigoTextBox.Enabled = false;
-            this.CodigoTextBox.Location = new System.Drawing.Point(109, 13);
-            this.CodigoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.CodigoTextBox.Name = "CodigoTextBox";
-            this.CodigoTextBox.Size = new System.Drawing.Size(320, 20);
-            this.CodigoTextBox.TabIndex = 27;
+            this.NombreTextBox.Enabled = false;
+            this.NombreTextBox.Location = new System.Drawing.Point(134, 13);
+            this.NombreTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.NombreTextBox.Name = "NombreTextBox";
+            this.NombreTextBox.Size = new System.Drawing.Size(295, 20);
+            this.NombreTextBox.TabIndex = 27;
             // 
             // label1
             // 
@@ -134,43 +136,43 @@
             this.label1.Location = new System.Drawing.Point(15, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 26;
-            this.label1.Text = "Codigo : ";
+            this.label1.Text = "Nombre : ";
             // 
             // telefonoTextBox
             // 
             this.telefonoTextBox.Enabled = false;
-            this.telefonoTextBox.Location = new System.Drawing.Point(109, 141);
+            this.telefonoTextBox.Location = new System.Drawing.Point(134, 183);
             this.telefonoTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(320, 20);
+            this.telefonoTextBox.Size = new System.Drawing.Size(295, 20);
             this.telefonoTextBox.TabIndex = 41;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 145);
+            this.label5.Location = new System.Drawing.Point(15, 187);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 40;
             this.label5.Text = "Telefono : ";
             // 
-            // dataGridView1
+            // ClientesDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 214);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(800, 307);
-            this.dataGridView1.TabIndex = 42;
+            this.ClientesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ClientesDataGridView.Location = new System.Drawing.Point(-1, 260);
+            this.ClientesDataGridView.Name = "ClientesDataGridView";
+            this.ClientesDataGridView.Size = new System.Drawing.Size(800, 263);
+            this.ClientesDataGridView.TabIndex = 42;
             // 
             // CancelarButton
             // 
             this.CancelarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelarButton.Image = global::Vista.Properties.Resources.cancelar2;
-            this.CancelarButton.Location = new System.Drawing.Point(437, 165);
+            this.CancelarButton.Location = new System.Drawing.Point(433, 211);
             this.CancelarButton.Margin = new System.Windows.Forms.Padding(4);
             this.CancelarButton.Name = "CancelarButton";
             this.CancelarButton.Size = new System.Drawing.Size(98, 42);
@@ -183,7 +185,7 @@
             // 
             this.EliminarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EliminarButton.Image = global::Vista.Properties.Resources.eliminar;
-            this.EliminarButton.Location = new System.Drawing.Point(331, 165);
+            this.EliminarButton.Location = new System.Drawing.Point(327, 211);
             this.EliminarButton.Margin = new System.Windows.Forms.Padding(4);
             this.EliminarButton.Name = "EliminarButton";
             this.EliminarButton.Size = new System.Drawing.Size(98, 42);
@@ -196,7 +198,7 @@
             // 
             this.GuardarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GuardarButton.Image = global::Vista.Properties.Resources.guardar;
-            this.GuardarButton.Location = new System.Drawing.Point(225, 165);
+            this.GuardarButton.Location = new System.Drawing.Point(221, 211);
             this.GuardarButton.Margin = new System.Windows.Forms.Padding(4);
             this.GuardarButton.Name = "GuardarButton";
             this.GuardarButton.Size = new System.Drawing.Size(98, 42);
@@ -209,7 +211,7 @@
             // 
             this.Modificarbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Modificarbutton.Image = global::Vista.Properties.Resources.modificar;
-            this.Modificarbutton.Location = new System.Drawing.Point(119, 165);
+            this.Modificarbutton.Location = new System.Drawing.Point(115, 211);
             this.Modificarbutton.Margin = new System.Windows.Forms.Padding(4);
             this.Modificarbutton.Name = "Modificarbutton";
             this.Modificarbutton.Size = new System.Drawing.Size(98, 42);
@@ -222,7 +224,7 @@
             // 
             this.NuevoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NuevoButton.Image = global::Vista.Properties.Resources.agregar_archivo;
-            this.NuevoButton.Location = new System.Drawing.Point(13, 165);
+            this.NuevoButton.Location = new System.Drawing.Point(9, 211);
             this.NuevoButton.Margin = new System.Windows.Forms.Padding(4);
             this.NuevoButton.Name = "NuevoButton";
             this.NuevoButton.Size = new System.Drawing.Size(98, 42);
@@ -231,12 +233,34 @@
             this.NuevoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NuevoButton.UseVisualStyleBackColor = true;
             // 
+            // CorreotextBox
+            // 
+            this.CorreotextBox.Enabled = false;
+            this.CorreotextBox.Location = new System.Drawing.Point(134, 146);
+            this.CorreotextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.CorreotextBox.Name = "CorreotextBox";
+            this.CorreotextBox.Size = new System.Drawing.Size(295, 20);
+            this.CorreotextBox.TabIndex = 44;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(15, 149);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Correo : ";
+            // 
             // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 524);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.CorreotextBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.ClientesDataGridView);
             this.Controls.Add(this.telefonoTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.EstaActivoChekbox);
@@ -249,13 +273,13 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.NombreTextBox);
+            this.Controls.Add(this.FechaNacimientoTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.CodigoTextBox);
+            this.Controls.Add(this.NombreTextBox);
             this.Controls.Add(this.label1);
             this.Name = "ClientesForm";
             this.Text = "Clientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientesDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,12 +297,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox NombreTextBox;
+        private System.Windows.Forms.TextBox FechaNacimientoTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox CodigoTextBox;
+        private System.Windows.Forms.TextBox NombreTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox telefonoTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView ClientesDataGridView;
+        private System.Windows.Forms.TextBox CorreotextBox;
+        private System.Windows.Forms.Label label6;
     }
 }
