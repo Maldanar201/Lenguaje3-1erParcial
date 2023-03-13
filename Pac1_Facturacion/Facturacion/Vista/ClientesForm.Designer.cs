@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.EstaActivoChekbox = new System.Windows.Forms.CheckBox();
             this.DireccionTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.idTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.FechaNacimientoTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.NombreTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,12 +47,16 @@
             this.NuevoButton = new System.Windows.Forms.Button();
             this.CorreotextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.fechaNacimientodateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ClientesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // EstaActivoChekbox
             // 
             this.EstaActivoChekbox.AutoSize = true;
+            this.EstaActivoChekbox.Enabled = false;
             this.EstaActivoChekbox.Location = new System.Drawing.Point(433, 187);
             this.EstaActivoChekbox.Name = "EstaActivoChekbox";
             this.EstaActivoChekbox.Size = new System.Drawing.Size(80, 17);
@@ -99,15 +103,6 @@
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 30;
             this.label3.Text = "Identidad  : ";
-            // 
-            // FechaNacimientoTextBox
-            // 
-            this.FechaNacimientoTextBox.Enabled = false;
-            this.FechaNacimientoTextBox.Location = new System.Drawing.Point(134, 45);
-            this.FechaNacimientoTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.FechaNacimientoTextBox.Name = "FechaNacimientoTextBox";
-            this.FechaNacimientoTextBox.Size = new System.Drawing.Size(295, 20);
-            this.FechaNacimientoTextBox.TabIndex = 29;
             // 
             // label2
             // 
@@ -170,6 +165,7 @@
             // 
             // CancelarButton
             // 
+            this.CancelarButton.Enabled = false;
             this.CancelarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelarButton.Image = global::Vista.Properties.Resources.cancelar2;
             this.CancelarButton.Location = new System.Drawing.Point(433, 211);
@@ -180,6 +176,7 @@
             this.CancelarButton.Text = "Cancelar";
             this.CancelarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CancelarButton.UseVisualStyleBackColor = true;
+            this.CancelarButton.Click += new System.EventHandler(this.CancelarButton_Click);
             // 
             // EliminarButton
             // 
@@ -193,9 +190,11 @@
             this.EliminarButton.Text = "Eliminar";
             this.EliminarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.EliminarButton.UseVisualStyleBackColor = true;
+            this.EliminarButton.Click += new System.EventHandler(this.EliminarButton_Click);
             // 
             // GuardarButton
             // 
+            this.GuardarButton.Enabled = false;
             this.GuardarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GuardarButton.Image = global::Vista.Properties.Resources.guardar;
             this.GuardarButton.Location = new System.Drawing.Point(221, 211);
@@ -206,6 +205,7 @@
             this.GuardarButton.Text = "Guardar";
             this.GuardarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.GuardarButton.UseVisualStyleBackColor = true;
+            this.GuardarButton.Click += new System.EventHandler(this.GuardarButton_Click);
             // 
             // Modificarbutton
             // 
@@ -219,6 +219,7 @@
             this.Modificarbutton.Text = "Modificar";
             this.Modificarbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Modificarbutton.UseVisualStyleBackColor = true;
+            this.Modificarbutton.Click += new System.EventHandler(this.Modificarbutton_Click);
             // 
             // NuevoButton
             // 
@@ -232,6 +233,7 @@
             this.NuevoButton.Text = "Nuevo";
             this.NuevoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NuevoButton.UseVisualStyleBackColor = true;
+            this.NuevoButton.Click += new System.EventHandler(this.NuevoButton_Click);
             // 
             // CorreotextBox
             // 
@@ -253,11 +255,23 @@
             this.label6.TabIndex = 43;
             this.label6.Text = "Correo : ";
             // 
+            // fechaNacimientodateTimePicker
+            // 
+            this.fechaNacimientodateTimePicker.Location = new System.Drawing.Point(134, 44);
+            this.fechaNacimientodateTimePicker.Name = "fechaNacimientodateTimePicker";
+            this.fechaNacimientodateTimePicker.Size = new System.Drawing.Size(291, 20);
+            this.fechaNacimientodateTimePicker.TabIndex = 45;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // ClientesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 524);
+            this.Controls.Add(this.fechaNacimientodateTimePicker);
             this.Controls.Add(this.CorreotextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.ClientesDataGridView);
@@ -273,13 +287,14 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.idTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.FechaNacimientoTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NombreTextBox);
             this.Controls.Add(this.label1);
             this.Name = "ClientesForm";
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.ClientesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ClientesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +312,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox idTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox FechaNacimientoTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NombreTextBox;
         private System.Windows.Forms.Label label1;
@@ -306,5 +320,7 @@
         private System.Windows.Forms.DataGridView ClientesDataGridView;
         private System.Windows.Forms.TextBox CorreotextBox;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker fechaNacimientodateTimePicker;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

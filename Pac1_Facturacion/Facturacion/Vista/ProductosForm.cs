@@ -101,7 +101,7 @@ namespace Vista
         {
             producto = new Producto();
             producto.Codigo = CodigoTextBox.Text;
-            producto.Decripcion = DescripcionTextBox.Text;
+            producto.Descripcion = DescripcionTextBox.Text;
             producto.Existencia = Convert.ToInt32(ExistenciaTextBox.Text);
             producto.Precio = Convert.ToDecimal(PrecioTextBox.Text);
             producto.EstaActivo = EstaActivoChekbox.Checked;

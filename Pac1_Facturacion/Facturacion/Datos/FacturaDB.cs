@@ -31,7 +31,7 @@ namespace Datos
             catch (Exception)
             {                
             }
-            return inserto
+            return inserto;
         }
     }
 }
