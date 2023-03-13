@@ -59,7 +59,7 @@ namespace Datos
             {
                 StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
                 sql.Append(" INSERT INTO clientes VALUES ");
-                sql.Append(" (@Codigo, @Nombre, @ID, @Direccion, @Telefono, @EstaActivo, @FechaCreacion); ");
+                sql.Append(" (@IDcliente, @Nombre, @Direccion, @Correo, @Telefono, @EstaActivo, @FechaNacimiento); ");
                 using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
                 {
                     _conexion.Open(); //inicia la conexion
@@ -67,13 +67,13 @@ namespace Datos
                     {
                         //inserta los parametros ingresados en la BD
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 50).Value = clientes.Codigo;
-                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 100).Value = clientes.Nombre;
-                        comando.Parameters.Add("@ID", MySqlDbType.VarChar, 25).Value = clientes.ID;
-                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 200).Value = clientes.Direccion;
-                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar,45).Value = clientes.Telefono;                        
+                        comando.Parameters.Add("@IDcliente", MySqlDbType.VarChar, 25).Value = clientes.ID;
+                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = clientes.Nombre;                        
+                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = clientes.Direccion;
+                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = clientes.Correo;
+                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar,15).Value = clientes.Telefono;                        
                         comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = clientes.EstaActivo;
-                        comando.Parameters.Add("@FechaCreacion", MySqlDbType.DateTime).Value = clientes.FechaCreacion;
+                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = clientes.FechaNacimiento;
                         comando.ExecuteNonQuery(); // ejecutamos, no devolvemos nada
                         inserto = true;
                     }
@@ -95,8 +95,8 @@ namespace Datos
             {
                 StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
                 sql.Append(" UPDATE clientes SET ");
-                sql.Append(" Nombre = @Nombre, ID = @ID, Direccion = @Direccion, Telefono = @Telefono, EstaActivo = @EstaActivo ");
-                sql.Append(" WHERE Codigo = @Codigo; ");
+                sql.Append(" Nombre = @Nombre, Direccion = @Direccion, Correo = @Correo, Telefono = @Telefono, EstaActivo = @EstaActivo, FechaNacimiento = @FechaNacimiento ");
+                sql.Append(" WHERE IDcliente = @IDcliente; ");
                 using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
                 {
                     _conexion.Open(); //inicia la conexion
@@ -104,12 +104,13 @@ namespace Datos
                     {
                         //inserta los parametros ingresados en la BD
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 50).Value = clientes.Codigo;
-                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 100).Value = clientes.Nombre;
-                        comando.Parameters.Add("@ID", MySqlDbType.VarChar, 25).Value = clientes.ID;
-                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 200).Value = clientes.Direccion;
-                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 45).Value = clientes.Telefono;
+                        comando.Parameters.Add("@IDcliente", MySqlDbType.VarChar, 25).Value = clientes.ID;
+                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = clientes.Nombre;
+                        comando.Parameters.Add("@Direccion", MySqlDbType.VarChar, 100).Value = clientes.Direccion;
+                        comando.Parameters.Add("@Correo", MySqlDbType.VarChar, 45).Value = clientes.Correo;
+                        comando.Parameters.Add("@Telefono", MySqlDbType.VarChar, 15).Value = clientes.Telefono;
                         comando.Parameters.Add("@EstaActivo", MySqlDbType.Bit).Value = clientes.EstaActivo;
+                        comando.Parameters.Add("@FechaNacimiento", MySqlDbType.DateTime).Value = clientes.FechaNacimiento;
                         comando.ExecuteNonQuery(); // ejecutamos, no devolvemos nada
                         edito = true;
                     }
@@ -123,7 +124,7 @@ namespace Datos
             return edito;
         }
 
-        public bool Eliminar(string Codigo)  // metodo para eliminar registros de la BD
+        public bool Eliminar(string ID)  // metodo para eliminar registros de la BD
 
         {
             bool elimino = false;
@@ -131,7 +132,7 @@ namespace Datos
             {
                 StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
                 sql.Append(" DELETE FROM clientes ");
-                sql.Append(" WHERE Codigo = @Codigo; ");
+                sql.Append(" WHERE IDcliente = @IDcliente; ");
                 using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
                 {
                     _conexion.Open(); //inicia la conexion
@@ -139,7 +140,7 @@ namespace Datos
                     {
                         //elimina los parametros ingresados en la BD
                         comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 50).Value = Codigo;
+                        comando.Parameters.Add("@IDcliente", MySqlDbType.VarChar, 25).Value = ID;
                         comando.ExecuteNonQuery(); // ejecutamos, no devolvemos nada
                         elimino = true;
                     }
@@ -179,34 +180,35 @@ namespace Datos
             return dt;
         }
 
-        public byte[] DevolverFoto(string Codigo) // Metodo Para obtener la foto guardada en la base de datos 
-        {
-            byte[] foto = new byte[0];
-            try
-            {
-                StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
-                sql.Append(" SELECT Foto FROM producto WHERE Codigo = @Codigo ");
-                using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
-                {
-                    _conexion.Open(); //inicia la conexion
-                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
-                    {
-                        comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = Codigo;
-                        MySqlDataReader dr = comando.ExecuteReader();
-                        if (dr.Read())
-                        {
-                            foto = (byte[])dr["Foto"];
-                        }
-                    }
+        //public byte[] DevolverFoto(string ID) // Metodo Para obtener la foto guardada en la base de datos 
+        //{
+        //    byte[] foto = new byte[0];
+        //    try
+        //    {
+        //        StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
+        //        sql.Append(" SELECT Foto FROM producto WHERE IDcliente = @IDcliente ");
+        //        using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
+        //        {
+        //            _conexion.Open(); //inicia la conexion
+        //            using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+        //            {
+        //                comando.CommandType = CommandType.Text;
+        //                comando.Parameters.Add("@IDcliente", MySqlDbType.VarChar, 25).Value = ID;
+        //                MySqlDataReader dr = comando.ExecuteReader();
+        //                if (dr.Read())
+        //                {
+        //                    foto = (byte[])dr["Foto"];
+        //                }
+        //            }
 
-                }
+        //        }
 
-            }
-            catch (System.Exception ex)
-            {
-            }
-            return foto;
-        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //    }
+        //    return foto;
+        //}
+
     }
 }
