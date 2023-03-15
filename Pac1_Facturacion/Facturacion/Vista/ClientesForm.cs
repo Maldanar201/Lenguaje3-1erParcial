@@ -32,6 +32,7 @@ namespace Vista
             CorreotextBox.Enabled = true;
             telefonoTextBox.Enabled = true;
             EstaActivoChekbox.Enabled = true;
+            fechaNacimientodateTimePicker.Enabled = true;
             GuardarButton.Enabled = true;
             CancelarButton.Enabled = true;
             NuevoButton.Enabled = false;
@@ -45,6 +46,7 @@ namespace Vista
             CorreotextBox.Enabled = false;
             telefonoTextBox.Enabled = false;
             EstaActivoChekbox.Enabled = false;
+            fechaNacimientodateTimePicker.Enabled = false;
             GuardarButton.Enabled = false;
             CancelarButton.Enabled = false;
             NuevoButton.Enabled = true;
@@ -57,7 +59,8 @@ namespace Vista
             DireccionTextBox.Clear();
             CorreotextBox.Clear();
             telefonoTextBox.Clear();
-            EstaActivoChekbox.Checked = false;            
+            EstaActivoChekbox.Checked = false;
+            fechaNacimientodateTimePicker.CustomFormat = "";
             cliente = null;
         }
 

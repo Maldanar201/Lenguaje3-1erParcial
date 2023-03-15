@@ -125,7 +125,7 @@ namespace Datos
                     _conexion.Open(); //inicia la conexion
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
-                        comando.CommandType = CommandType.Text;
+                        comando.CommandType = CommandType.Text;                        
                         MySqlDataReader dr = comando.ExecuteReader();
                         dt.Load(dr);
                     }
@@ -182,6 +182,7 @@ namespace Datos
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
+                        comando.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = codigo;
                         MySqlDataReader dr = comando.ExecuteReader();
 
                         if (dr.Read())

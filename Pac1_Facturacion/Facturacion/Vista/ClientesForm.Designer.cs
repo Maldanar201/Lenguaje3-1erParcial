@@ -257,6 +257,7 @@
             // 
             // fechaNacimientodateTimePicker
             // 
+            this.fechaNacimientodateTimePicker.Enabled = false;
             this.fechaNacimientodateTimePicker.Location = new System.Drawing.Point(134, 44);
             this.fechaNacimientodateTimePicker.Name = "fechaNacimientodateTimePicker";
             this.fechaNacimientodateTimePicker.Size = new System.Drawing.Size(291, 20);

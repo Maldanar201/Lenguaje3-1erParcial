@@ -35,19 +35,19 @@
             this.UsuarioTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.IDClienteTextBox = new System.Windows.Forms.TextBox();
-            this.buscarClienteButton = new System.Windows.Forms.Button();
             this.NombreClienteTextBox = new System.Windows.Forms.TextBox();
+            this.buscarClienteButton = new System.Windows.Forms.Button();
+            this.IDClienteTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.CantidadTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.existenciaTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.DescripcionProductotextBox = new System.Windows.Forms.TextBox();
             this.buscarProductobutton = new System.Windows.Forms.Button();
             this.CodigoProductoTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.existenciaTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.CantidadTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.detalleDataGridView = new System.Windows.Forms.DataGridView();
             this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -134,21 +134,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Cliente";
             // 
-            // label4
+            // NombreClienteTextBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Identidad :";
-            // 
-            // IDClienteTextBox
-            // 
-            this.IDClienteTextBox.Location = new System.Drawing.Point(81, 24);
-            this.IDClienteTextBox.Name = "IDClienteTextBox";
-            this.IDClienteTextBox.Size = new System.Drawing.Size(200, 22);
-            this.IDClienteTextBox.TabIndex = 2;
+            this.NombreClienteTextBox.Location = new System.Drawing.Point(353, 24);
+            this.NombreClienteTextBox.Name = "NombreClienteTextBox";
+            this.NombreClienteTextBox.ReadOnly = true;
+            this.NombreClienteTextBox.Size = new System.Drawing.Size(687, 22);
+            this.NombreClienteTextBox.TabIndex = 4;
             // 
             // buscarClienteButton
             // 
@@ -160,14 +152,24 @@
             this.buscarClienteButton.Text = "...";
             this.buscarClienteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buscarClienteButton.UseVisualStyleBackColor = true;
+            this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
             // 
-            // NombreClienteTextBox
+            // IDClienteTextBox
             // 
-            this.NombreClienteTextBox.Location = new System.Drawing.Point(353, 24);
-            this.NombreClienteTextBox.Name = "NombreClienteTextBox";
-            this.NombreClienteTextBox.ReadOnly = true;
-            this.NombreClienteTextBox.Size = new System.Drawing.Size(687, 22);
-            this.NombreClienteTextBox.TabIndex = 4;
+            this.IDClienteTextBox.Location = new System.Drawing.Point(81, 24);
+            this.IDClienteTextBox.Name = "IDClienteTextBox";
+            this.IDClienteTextBox.Size = new System.Drawing.Size(200, 22);
+            this.IDClienteTextBox.TabIndex = 2;
+            this.IDClienteTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IDClienteTextBox_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Identidad :";
             // 
             // groupBox3
             // 
@@ -185,6 +187,39 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Datos Productos";
+            // 
+            // CantidadTextBox
+            // 
+            this.CantidadTextBox.Location = new System.Drawing.Point(855, 52);
+            this.CantidadTextBox.Name = "CantidadTextBox";
+            this.CantidadTextBox.Size = new System.Drawing.Size(185, 22);
+            this.CantidadTextBox.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(765, 55);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Cantidad :";
+            // 
+            // existenciaTextBox
+            // 
+            this.existenciaTextBox.Location = new System.Drawing.Point(81, 49);
+            this.existenciaTextBox.Name = "existenciaTextBox";
+            this.existenciaTextBox.ReadOnly = true;
+            this.existenciaTextBox.Size = new System.Drawing.Size(200, 22);
+            this.existenciaTextBox.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 16);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Existencia :";
             // 
             // DescripcionProductotextBox
             // 
@@ -220,39 +255,6 @@
             this.label5.Size = new System.Drawing.Size(57, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Codigo :";
-            // 
-            // existenciaTextBox
-            // 
-            this.existenciaTextBox.Location = new System.Drawing.Point(81, 49);
-            this.existenciaTextBox.Name = "existenciaTextBox";
-            this.existenciaTextBox.ReadOnly = true;
-            this.existenciaTextBox.Size = new System.Drawing.Size(200, 22);
-            this.existenciaTextBox.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 16);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Existencia :";
-            // 
-            // CantidadTextBox
-            // 
-            this.CantidadTextBox.Location = new System.Drawing.Point(855, 52);
-            this.CantidadTextBox.Name = "CantidadTextBox";
-            this.CantidadTextBox.Size = new System.Drawing.Size(185, 22);
-            this.CantidadTextBox.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(765, 55);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 16);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Cantidad :";
             // 
             // detalleDataGridView
             // 

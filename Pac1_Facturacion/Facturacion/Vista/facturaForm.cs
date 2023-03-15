@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Datos;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +19,27 @@ namespace Vista
             InitializeComponent();
         }
 
-        
+        Clientes miCliente = null;
+        ClientesDB clienteDB = new ClientesDB();
+
+        private void IDClienteTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter) // si presiona tecla enter
+            {
+                miCliente = new Clientes();
+                miCliente = clienteDB.DevolverClientesPorIdentidad(IDClienteTextBox.Text);
+                NombreClienteTextBox.Text = miCliente.Nombre;
+            }
+            else
+            {
+                miCliente = null;
+                NombreClienteTextBox.Clear();
+            }
+        }
+
+        private void buscarClienteButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

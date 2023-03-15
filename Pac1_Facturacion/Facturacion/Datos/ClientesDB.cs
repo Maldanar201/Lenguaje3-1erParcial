@@ -27,6 +27,7 @@ namespace Datos
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
                         comando.CommandType = CommandType.Text;
+                        comando.Parameters.Add("@IDcliente", MySqlDbType.VarChar, 25).Value = identidad;
                         MySqlDataReader dr = comando.ExecuteReader();
                         
                         if(dr.Read()) 
@@ -179,6 +180,34 @@ namespace Datos
             }
             return dt;
         }
+
+        public DataTable DevolverClientesPorNombre(string nombre)// metodo para leer la base de datos y verla en el formulario clientes
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
+                sql.Append(" SELECT * FROM clientes WHERE Nombre LIKE ('%@Nombre%')"); //LIKE filtro para presentar todo lo que contega dentro de ('% %')
+                using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
+                {
+                    _conexion.Open(); //inicia la conexion
+                    using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
+                    {
+                        comando.CommandType = CommandType.Text;
+                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = nombre;
+                        MySqlDataReader dr = comando.ExecuteReader();
+                        dt.Load(dr);
+                    }
+
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+            }
+            return dt;
+        }
+
 
         //public byte[] DevolverFoto(string ID) // Metodo Para obtener la foto guardada en la base de datos 
         //{
