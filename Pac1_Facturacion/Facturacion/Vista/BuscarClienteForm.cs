@@ -20,7 +20,7 @@ namespace Vista
         }
 
         ClientesDB clientesDB = new ClientesDB();
-        public Clientes Cliente = new Clientes(); // objeto que cargaremos para mostrar clientes en el dataGrid
+        public Clientes cliente = new Clientes(); // objeto que cargaremos para mostrar clientes en el dataGrid
         private void BuscarClienteForm_Load(object sender, EventArgs e)
         {
             clientesDataGridView.DataSource = clientesDB.DevolverClientes();
@@ -30,13 +30,13 @@ namespace Vista
         {
             if(clientesDataGridView.SelectedRows.Count > 0) 
             {
-                Cliente.ID = clientesDataGridView.CurrentRow.Cells["ID"].Value.ToString();
-                Cliente.Nombre = clientesDataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
-                Cliente.Telefono = clientesDataGridView.CurrentRow.Cells["Telefono"].Value.ToString();
-                Cliente.Direccion = clientesDataGridView.CurrentRow.Cells["Diereccion"].Value.ToString();
-                Cliente.Correo = clientesDataGridView.CurrentRow.Cells["Correo"].Value.ToString();
-                Cliente.FechaNacimiento = Convert.ToDateTime(clientesDataGridView.CurrentRow.Cells["FechaNacimiento"].Value);
-                Cliente.EstaActivo = Convert.ToBoolean(clientesDataGridView.CurrentRow.Cells["EstaActivo"].Value);
+                cliente.ID = clientesDataGridView.CurrentRow.Cells["IDcliente"].Value.ToString();
+                cliente.Nombre = clientesDataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
+                cliente.Telefono = clientesDataGridView.CurrentRow.Cells["Telefono"].Value.ToString();
+                cliente.Direccion = clientesDataGridView.CurrentRow.Cells["Direccion"].Value.ToString();
+                cliente.Correo = clientesDataGridView.CurrentRow.Cells["Correo"].Value.ToString();
+                cliente.FechaNacimiento = Convert.ToDateTime(clientesDataGridView.CurrentRow.Cells["FechaNacimiento"].Value);
+                cliente.EstaActivo = Convert.ToBoolean(clientesDataGridView.CurrentRow.Cells["EstaActivo"].Value);
                 this.Close();
             }
         }

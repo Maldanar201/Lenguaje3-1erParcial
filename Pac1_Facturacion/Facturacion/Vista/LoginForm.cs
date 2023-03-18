@@ -54,6 +54,14 @@ namespace Vista
             {
                 if (usuario.EstaActivo)
                 {
+                    //CACTURARA EL USUARIO CON LA SESION ABIERTA
+                    // genericIdentity nos permite generar una autentificacion
+                    System.Security.Principal.GenericIdentity identidad = new System.Security.Principal.GenericIdentity(usuario.CodigoUsuario);
+                    //guarda la identidad y genera el rol del usuario
+                    System.Security.Principal.GenericPrincipal principal = new System.Security.Principal.GenericPrincipal(identidad, new string[] {usuario.Rol});
+                    //almacena la el usuario con sesion abierta
+                    System.Threading.Thread.CurrentPrincipal = principal;
+
                     //MOSTRAR EL MENU
                     menu menuFormularios = new menu(); // instancia un nuevo menu de formulario
                     Hide(); // oculta la ventana de logueo

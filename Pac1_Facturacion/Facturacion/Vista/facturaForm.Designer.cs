@@ -36,7 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.NombreClienteTextBox = new System.Windows.Forms.TextBox();
-            this.buscarClienteButton = new System.Windows.Forms.Button();
             this.IDClienteTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -45,7 +44,6 @@
             this.existenciaTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.DescripcionProductotextBox = new System.Windows.Forms.TextBox();
-            this.buscarProductobutton = new System.Windows.Forms.Button();
             this.CodigoProductoTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.detalleDataGridView = new System.Windows.Forms.DataGridView();
@@ -57,8 +55,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.TotalTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.guardarButton = new System.Windows.Forms.Button();
             this.cancelarButton = new System.Windows.Forms.Button();
+            this.guardarButton = new System.Windows.Forms.Button();
+            this.buscarProductobutton = new System.Windows.Forms.Button();
+            this.buscarClienteButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -142,18 +142,6 @@
             this.NombreClienteTextBox.Size = new System.Drawing.Size(687, 22);
             this.NombreClienteTextBox.TabIndex = 4;
             // 
-            // buscarClienteButton
-            // 
-            this.buscarClienteButton.Image = global::Vista.Properties.Resources.buscar;
-            this.buscarClienteButton.Location = new System.Drawing.Point(287, 24);
-            this.buscarClienteButton.Name = "buscarClienteButton";
-            this.buscarClienteButton.Size = new System.Drawing.Size(60, 23);
-            this.buscarClienteButton.TabIndex = 3;
-            this.buscarClienteButton.Text = "...";
-            this.buscarClienteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buscarClienteButton.UseVisualStyleBackColor = true;
-            this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
-            // 
             // IDClienteTextBox
             // 
             this.IDClienteTextBox.Location = new System.Drawing.Point(81, 24);
@@ -194,6 +182,7 @@
             this.CantidadTextBox.Name = "CantidadTextBox";
             this.CantidadTextBox.Size = new System.Drawing.Size(185, 22);
             this.CantidadTextBox.TabIndex = 12;
+            this.CantidadTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CantidadTextBox_KeyPress);
             // 
             // label7
             // 
@@ -229,23 +218,13 @@
             this.DescripcionProductotextBox.Size = new System.Drawing.Size(687, 22);
             this.DescripcionProductotextBox.TabIndex = 8;
             // 
-            // buscarProductobutton
-            // 
-            this.buscarProductobutton.Image = global::Vista.Properties.Resources.buscar;
-            this.buscarProductobutton.Location = new System.Drawing.Point(287, 21);
-            this.buscarProductobutton.Name = "buscarProductobutton";
-            this.buscarProductobutton.Size = new System.Drawing.Size(60, 23);
-            this.buscarProductobutton.TabIndex = 7;
-            this.buscarProductobutton.Text = "...";
-            this.buscarProductobutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buscarProductobutton.UseVisualStyleBackColor = true;
-            // 
             // CodigoProductoTextBox
             // 
             this.CodigoProductoTextBox.Location = new System.Drawing.Point(81, 21);
             this.CodigoProductoTextBox.Name = "CodigoProductoTextBox";
             this.CodigoProductoTextBox.Size = new System.Drawing.Size(200, 22);
             this.CodigoProductoTextBox.TabIndex = 6;
+            this.CodigoProductoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CodigoProductoTextBox_KeyPress);
             // 
             // label5
             // 
@@ -331,6 +310,17 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "Total Pagar :";
             // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Image = global::Vista.Properties.Resources.cancelar;
+            this.cancelarButton.Location = new System.Drawing.Point(123, 460);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(105, 44);
+            this.cancelarButton.TabIndex = 22;
+            this.cancelarButton.Text = "Cancelar";
+            this.cancelarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cancelarButton.UseVisualStyleBackColor = true;
+            // 
             // guardarButton
             // 
             this.guardarButton.Image = global::Vista.Properties.Resources.comprobado;
@@ -342,16 +332,29 @@
             this.guardarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.guardarButton.UseVisualStyleBackColor = true;
             // 
-            // cancelarButton
+            // buscarProductobutton
             // 
-            this.cancelarButton.Image = global::Vista.Properties.Resources.cancelar;
-            this.cancelarButton.Location = new System.Drawing.Point(123, 460);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(105, 44);
-            this.cancelarButton.TabIndex = 22;
-            this.cancelarButton.Text = "Cancelar";
-            this.cancelarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.buscarProductobutton.Image = global::Vista.Properties.Resources.buscar;
+            this.buscarProductobutton.Location = new System.Drawing.Point(287, 21);
+            this.buscarProductobutton.Name = "buscarProductobutton";
+            this.buscarProductobutton.Size = new System.Drawing.Size(60, 23);
+            this.buscarProductobutton.TabIndex = 7;
+            this.buscarProductobutton.Text = "...";
+            this.buscarProductobutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buscarProductobutton.UseVisualStyleBackColor = true;
+            this.buscarProductobutton.Click += new System.EventHandler(this.buscarProductobutton_Click);
+            // 
+            // buscarClienteButton
+            // 
+            this.buscarClienteButton.Image = global::Vista.Properties.Resources.buscar;
+            this.buscarClienteButton.Location = new System.Drawing.Point(287, 24);
+            this.buscarClienteButton.Name = "buscarClienteButton";
+            this.buscarClienteButton.Size = new System.Drawing.Size(60, 23);
+            this.buscarClienteButton.TabIndex = 3;
+            this.buscarClienteButton.Text = "...";
+            this.buscarClienteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buscarClienteButton.UseVisualStyleBackColor = true;
+            this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
             // 
             // facturaForm
             // 
@@ -378,6 +381,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "facturaForm";
             this.Text = "Factura";
+            this.Load += new System.EventHandler(this.facturaForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
