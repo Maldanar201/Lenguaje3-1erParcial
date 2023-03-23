@@ -30,12 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.FechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.UsuarioTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.NombreClienteTextBox = new System.Windows.Forms.TextBox();
+            this.buscarClienteButton = new System.Windows.Forms.Button();
             this.IDClienteTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -44,6 +45,7 @@
             this.existenciaTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.DescripcionProductotextBox = new System.Windows.Forms.TextBox();
+            this.buscarProductobutton = new System.Windows.Forms.Button();
             this.CodigoProductoTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.detalleDataGridView = new System.Windows.Forms.DataGridView();
@@ -57,8 +59,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.guardarButton = new System.Windows.Forms.Button();
-            this.buscarProductobutton = new System.Windows.Forms.Button();
-            this.buscarClienteButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,7 +77,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.FechaDateTimePicker);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.UsuarioTextBox);
             this.groupBox1.Controls.Add(this.label2);
@@ -87,13 +87,13 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // dateTimePicker1
+            // FechaDateTimePicker
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(855, 15);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(185, 22);
-            this.dateTimePicker1.TabIndex = 3;
+            this.FechaDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.FechaDateTimePicker.Location = new System.Drawing.Point(855, 15);
+            this.FechaDateTimePicker.Name = "FechaDateTimePicker";
+            this.FechaDateTimePicker.Size = new System.Drawing.Size(185, 22);
+            this.FechaDateTimePicker.TabIndex = 3;
             // 
             // label3
             // 
@@ -141,6 +141,18 @@
             this.NombreClienteTextBox.ReadOnly = true;
             this.NombreClienteTextBox.Size = new System.Drawing.Size(687, 22);
             this.NombreClienteTextBox.TabIndex = 4;
+            // 
+            // buscarClienteButton
+            // 
+            this.buscarClienteButton.Image = global::Vista.Properties.Resources.buscar;
+            this.buscarClienteButton.Location = new System.Drawing.Point(287, 24);
+            this.buscarClienteButton.Name = "buscarClienteButton";
+            this.buscarClienteButton.Size = new System.Drawing.Size(60, 23);
+            this.buscarClienteButton.TabIndex = 3;
+            this.buscarClienteButton.Text = "...";
+            this.buscarClienteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buscarClienteButton.UseVisualStyleBackColor = true;
+            this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
             // 
             // IDClienteTextBox
             // 
@@ -217,6 +229,18 @@
             this.DescripcionProductotextBox.ReadOnly = true;
             this.DescripcionProductotextBox.Size = new System.Drawing.Size(687, 22);
             this.DescripcionProductotextBox.TabIndex = 8;
+            // 
+            // buscarProductobutton
+            // 
+            this.buscarProductobutton.Image = global::Vista.Properties.Resources.buscar;
+            this.buscarProductobutton.Location = new System.Drawing.Point(287, 21);
+            this.buscarProductobutton.Name = "buscarProductobutton";
+            this.buscarProductobutton.Size = new System.Drawing.Size(60, 23);
+            this.buscarProductobutton.TabIndex = 7;
+            this.buscarProductobutton.Text = "...";
+            this.buscarProductobutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buscarProductobutton.UseVisualStyleBackColor = true;
+            this.buscarProductobutton.Click += new System.EventHandler(this.buscarProductobutton_Click);
             // 
             // CodigoProductoTextBox
             // 
@@ -331,30 +355,7 @@
             this.guardarButton.Text = "Guardar";
             this.guardarButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.guardarButton.UseVisualStyleBackColor = true;
-            // 
-            // buscarProductobutton
-            // 
-            this.buscarProductobutton.Image = global::Vista.Properties.Resources.buscar;
-            this.buscarProductobutton.Location = new System.Drawing.Point(287, 21);
-            this.buscarProductobutton.Name = "buscarProductobutton";
-            this.buscarProductobutton.Size = new System.Drawing.Size(60, 23);
-            this.buscarProductobutton.TabIndex = 7;
-            this.buscarProductobutton.Text = "...";
-            this.buscarProductobutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buscarProductobutton.UseVisualStyleBackColor = true;
-            this.buscarProductobutton.Click += new System.EventHandler(this.buscarProductobutton_Click);
-            // 
-            // buscarClienteButton
-            // 
-            this.buscarClienteButton.Image = global::Vista.Properties.Resources.buscar;
-            this.buscarClienteButton.Location = new System.Drawing.Point(287, 24);
-            this.buscarClienteButton.Name = "buscarClienteButton";
-            this.buscarClienteButton.Size = new System.Drawing.Size(60, 23);
-            this.buscarClienteButton.TabIndex = 3;
-            this.buscarClienteButton.Text = "...";
-            this.buscarClienteButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buscarClienteButton.UseVisualStyleBackColor = true;
-            this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // facturaForm
             // 
@@ -399,7 +400,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker FechaDateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox UsuarioTextBox;
         private System.Windows.Forms.GroupBox groupBox2;

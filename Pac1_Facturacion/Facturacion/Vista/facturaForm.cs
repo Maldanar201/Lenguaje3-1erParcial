@@ -24,6 +24,7 @@ namespace Vista
         Producto miProducto = null;
         ProductoDB productoDB = new ProductoDB();
         List<DetalleFactura> listaDetalles = new List<DetalleFactura>();
+        FacturaDB facturaDB = new FacturaDB();
         decimal subtotal = 0;
         decimal isv = 0;
         decimal totalApagar = 0;
@@ -73,6 +74,7 @@ namespace Vista
             {
                 miProducto = null;
                 DescripcionProductotextBox.Clear();
+                existenciaTextBox.Clear();
             }
         }
 
@@ -90,7 +92,7 @@ namespace Vista
         private void CantidadTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             //Al Precionar enter y cantidadtexbox no esta vacio continua..
-            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(CantidadTextBox.Text));
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(CantidadTextBox.Text))
             {
                 DetalleFactura detalle = new DetalleFactura();
                 detalle.CodigoProducto = miProducto.Codigo;
@@ -98,10 +100,11 @@ namespace Vista
                 detalle.Precio = Convert.ToDecimal(miProducto.Precio);
                 //Total es igual a la cantidad * el precio
                 detalle.Total = Convert.ToInt32(CantidadTextBox.Text) * miProducto.Precio;
+                detalle.Descripcion = miProducto.Descripcion;
 
                 subtotal += detalle.Total;
                 isv = subtotal * 0.15M;
-                totalApagar = subtotal + isv - descuento;
+                totalApagar = subtotal + isv;
 
                 listaDetalles.Add(detalle);
                 detalleDataGridView.DataSource = null;
@@ -111,7 +114,65 @@ namespace Vista
                 isvTextBox.Text = isv.ToString();
                 TotalTextBox.Text = totalApagar.ToString();
 
+                miProducto = null;
+                CodigoProductoTextBox.Clear();
+                DescripcionProductotextBox.Clear();
+                existenciaTextBox.Clear();
+                CantidadTextBox.Clear();
+                CodigoProductoTextBox.Focus();
             }
+        }         
+              
+
+        private void guardarButton_Click(object sender, EventArgs e)
+        {
+            Factura miFactura = new Factura();
+            miFactura.Fecha = FechaDateTimePicker.Value;
+            miFactura.CodigoUsuario = System.Threading.Thread.CurrentPrincipal.Identity.Name;
+            miFactura.IDcliente = miCliente.ID;
+            miFactura.SubTotal = subtotal;
+            miFactura.ISV = isv;
+            miFactura.Descuento = descuento;
+            miFactura.Total = totalApagar;
+
+            bool inserto = facturaDB.Guardar(miFactura, listaDetalles);
+
+            if(inserto) 
+            {
+                LimpiarControles();
+                IDClienteTextBox.Focus();
+                MessageBox.Show(" Factura Registrada con Exito ");
+            }
+            else
+            
+                MessageBox.Show(" La Factura No pudo ser Registrada  ");
+            
+        }
+
+        private void LimpiarControles()
+        {
+            miCliente = null;
+            miProducto = null;
+            listaDetalles = null;
+            FechaDateTimePicker.Value = DateTime.Now;
+            IDClienteTextBox.Clear();
+            NombreClienteTextBox.Clear();
+            CodigoProductoTextBox.Clear();
+            DescripcionProductotextBox.Clear();
+            existenciaTextBox.Clear();
+            CantidadTextBox.Clear();
+            detalleDataGridView.DataSource = null;
+            subtotal = 0;
+            subTotalTextBox.Clear();
+            isv = 0;
+            isvTextBox.Clear();
+            descuento = 0;
+            DescuentoTextBox.Clear();
+            totalApagar = 0;
+            TotalTextBox.Clear();
+
+
+
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Entidades
         public int ID { get; set; }
         public int IDfactura {get; set; }
         public string CodigoProducto { get; set; }
+        public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
         public decimal Total { get; set; }
@@ -19,11 +20,12 @@ namespace Entidades
         {
         }
 
-        public DetalleFactura(int iD, int iDfactura, string codigoProducto, decimal precio, int cantidad, decimal total)
+        public DetalleFactura(int iD, int iDfactura, string codigoProducto, string descripcion, decimal precio, int cantidad, decimal total)
         {
             ID = iD;
             IDfactura = iDfactura;
             CodigoProducto = codigoProducto;
+            Descripcion = descripcion;
             Precio = precio;
             Cantidad = cantidad;
             Total = total;

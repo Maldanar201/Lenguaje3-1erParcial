@@ -212,14 +212,13 @@ namespace Datos
             try
             {
                 StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
-                sql.Append(" SELECT * FROM producto WHERE Descripcion LIKE '%@Descripcion%'");
+                sql.Append(" SELECT * FROM producto WHERE Descripcion LIKE '%" + descripcion + "%' ");
                 using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
                 {
                     _conexion.Open(); //inicia la conexion
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
-                        comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Descripcion", MySqlDbType.VarChar, 200).Value = descripcion;
+                        comando.CommandType = CommandType.Text;                      
                         MySqlDataReader dr = comando.ExecuteReader();
                         dt.Load(dr);
                     }

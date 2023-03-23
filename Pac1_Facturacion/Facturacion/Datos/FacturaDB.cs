@@ -20,11 +20,11 @@ namespace Datos
             try
             {
                 StringBuilder sqlFactura = new StringBuilder(); // abre un objeto para capturar y ordenar sencias sql largas
-                sqlFactura.Append(" INSERT INTO factura VALUES (@fecha, @IDcliente, @CodigoUsuario, @ISV, @Descuento, @SubTotal, @Total); "); // asigna tarea al objeto para insertar datos en la tabla sql
+                sqlFactura.Append(" INSERT INTO factura (fecha, IDcliente, CodigoUsuario, ISV, Descuento, SubTotal, Total) VALUES (@fecha, @IDcliente, @CodigoUsuario, @ISV, @Descuento, @SubTotal, @Total); "); // asigna tarea al objeto para insertar datos en la tabla sql
                 sqlFactura.Append(" SELECT LAST_INSERT_ID(); "); // captura y devuelve el ultimo numero de la llave primaria que se ejecuto
 
                 StringBuilder sqlDetalle = new StringBuilder();
-                sqlDetalle.Append(" INSERT INTO detallefactura VALUES (@IDfactura, @CodigoProducto, @Precio, @Cantidad, Total); ");
+                sqlDetalle.Append(" INSERT INTO detallefactura (IDfactura, CodigoProducto, Precio, Cantidad, Total) VALUES (@IDfactura, @CodigoProducto, @Precio, @Cantidad, @Total); ");
 
                 StringBuilder sqlExistencia = new StringBuilder();
                 sqlExistencia.Append(" UPDATE producto SET Existencia = Existencia - @Cantidad WHERE Codigo = @Codigo");
@@ -46,7 +46,7 @@ namespace Datos
                             cmd1.Parameters.Add("CodigoUsuario", MySqlDbType.VarChar, 50).Value = factura.CodigoUsuario;
                             cmd1.Parameters.Add("ISV", MySqlDbType.Decimal).Value = factura.ISV;
                             cmd1.Parameters.Add("Descuento", MySqlDbType.Decimal).Value = factura.Descuento;
-                            cmd1.Parameters.Add("SunTotal", MySqlDbType.Decimal).Value = factura.SubTotal;
+                            cmd1.Parameters.Add("SubTotal", MySqlDbType.Decimal).Value = factura.SubTotal;
                             cmd1.Parameters.Add("Total", MySqlDbType.Decimal).Value = factura.Total;
                             idFactura = Convert.ToInt32(cmd1.ExecuteScalar());// captura el ultimo id de factura usado y lo asigna a la variable
                         }

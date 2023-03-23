@@ -187,14 +187,13 @@ namespace Datos
             try
             {
                 StringBuilder sql = new StringBuilder(); // ayuda a capturar y ejecutar sentencias sql largas
-                sql.Append(" SELECT * FROM clientes WHERE Nombre LIKE ('%@Nombre%')"); //LIKE filtro para presentar todo lo que contega dentro de ('% %')
+                sql.Append(" SELECT * FROM clientes WHERE Nombre LIKE '%" + nombre + "%' "); //LIKE filtro para presentar todo lo que contega dentro de ('% %')
                 using (MySqlConnection _conexion = new MySqlConnection(cadena)) //Abre la conexion con los parametros de la BD
                 {
                     _conexion.Open(); //inicia la conexion
                     using (MySqlCommand comando = new MySqlCommand(sql.ToString(), _conexion))
                     {
-                        comando.CommandType = CommandType.Text;
-                        comando.Parameters.Add("@Nombre", MySqlDbType.VarChar, 50).Value = nombre;
+                        comando.CommandType = CommandType.Text;                       
                         MySqlDataReader dr = comando.ExecuteReader();
                         dt.Load(dr);
                     }
