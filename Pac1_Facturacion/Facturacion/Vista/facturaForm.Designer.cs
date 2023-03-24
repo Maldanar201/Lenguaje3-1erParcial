@@ -307,6 +307,7 @@
             this.DescuentoTextBox.Name = "DescuentoTextBox";
             this.DescuentoTextBox.Size = new System.Drawing.Size(185, 22);
             this.DescuentoTextBox.TabIndex = 18;
+            this.DescuentoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DescuentoTextBox_KeyPress);
             // 
             // label10
             // 

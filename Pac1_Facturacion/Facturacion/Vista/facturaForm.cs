@@ -94,32 +94,42 @@ namespace Vista
             //Al Precionar enter y cantidadtexbox no esta vacio continua..
             if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(CantidadTextBox.Text))
             {
-                DetalleFactura detalle = new DetalleFactura();
-                detalle.CodigoProducto = miProducto.Codigo;
-                detalle.Cantidad = Convert.ToInt32(CantidadTextBox.Text);
-                detalle.Precio = Convert.ToDecimal(miProducto.Precio);
-                //Total es igual a la cantidad * el precio
-                detalle.Total = Convert.ToInt32(CantidadTextBox.Text) * miProducto.Precio;
-                detalle.Descripcion = miProducto.Descripcion;
+                if (Convert.ToInt32(existenciaTextBox.Text) > 0)
+                {
+                    if (Convert.ToInt32(existenciaTextBox.Text) >= Convert.ToInt32(CantidadTextBox.Text))
+                    {
+                        DetalleFactura detalle = new DetalleFactura();
+                        detalle.CodigoProducto = miProducto.Codigo;
+                        detalle.Cantidad = Convert.ToInt32(CantidadTextBox.Text);
+                        detalle.Precio = Convert.ToDecimal(miProducto.Precio);
+                        //Total es igual a la cantidad * el precio
+                        detalle.Total = Convert.ToInt32(CantidadTextBox.Text) * miProducto.Precio;
+                        detalle.Descripcion = miProducto.Descripcion;
 
-                subtotal += detalle.Total;
-                isv = subtotal * 0.15M;
-                totalApagar = subtotal + isv;
+                        subtotal += detalle.Total;
+                        isv = subtotal * 0.15M;
+                        totalApagar = subtotal + isv;
 
-                listaDetalles.Add(detalle);
-                detalleDataGridView.DataSource = null;
-                detalleDataGridView.DataSource = listaDetalles;
+                        listaDetalles.Add(detalle);
+                        detalleDataGridView.DataSource = null;
+                        detalleDataGridView.DataSource = listaDetalles;
 
-                subTotalTextBox.Text = subtotal.ToString();
-                isvTextBox.Text = isv.ToString();
-                TotalTextBox.Text = totalApagar.ToString();
+                        subTotalTextBox.Text = subtotal.ToString("N2");
+                        isvTextBox.Text = isv.ToString("N2");
+                        TotalTextBox.Text = totalApagar.ToString("N2");
 
-                miProducto = null;
-                CodigoProductoTextBox.Clear();
-                DescripcionProductotextBox.Clear();
-                existenciaTextBox.Clear();
-                CantidadTextBox.Clear();
-                CodigoProductoTextBox.Focus();
+                        miProducto = null;
+                        CodigoProductoTextBox.Clear();
+                        DescripcionProductotextBox.Clear();
+                        existenciaTextBox.Clear();
+                        CantidadTextBox.Clear();
+                        CodigoProductoTextBox.Focus();
+                    }
+                    else
+                        MessageBox.Show(" No Hay suficiente existencias de : " + miProducto.Descripcion);
+                }
+                else
+                    MessageBox.Show(" No Hay suficiente existencias de : " + miProducto.Descripcion);
             }
         }         
               
@@ -170,7 +180,27 @@ namespace Vista
             DescuentoTextBox.Clear();
             totalApagar = 0;
             TotalTextBox.Clear();
+        }
 
+        private void DescuentoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit((char)e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '\b')) // si el caracter es diferente de numero y diferente de punto, no los permite
+            {
+                e.Handled = true; // si es numero o punto si lo permite
+            }
+
+            if ((e.KeyChar == '.') && (sender as TextBox).Text.IndexOf('.') > -1)// valida si ya existe un punto le reste y no le permita ingresar otro punto
+            {
+                e.Handled = true;
+            }
+
+            //Al Precionar enter y cantidadtexbox no esta vacio continua..
+            if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(CantidadTextBox.Text))
+            {
+                descuento = Convert.ToDecimal(DescuentoTextBox.Text);
+                totalApagar = totalApagar - descuento;
+                TotalTextBox.Text = totalApagar.ToString();
+            }
 
 
         }
