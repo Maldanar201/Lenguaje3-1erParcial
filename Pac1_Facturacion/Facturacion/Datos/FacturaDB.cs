@@ -69,7 +69,7 @@ namespace Datos
                             {
                                 cmd3.CommandType = System.Data.CommandType.Text;                               
                                 cmd3.Parameters.Add("@Cantidad", MySqlDbType.Int32).Value = detalle.Cantidad;
-                                cmd3.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = detalle.Total;
+                                cmd3.Parameters.Add("@Codigo", MySqlDbType.VarChar, 80).Value = detalle.CodigoProducto;
                                 cmd3.ExecuteNonQuery(); // no nesetimos devlover solo insertar
 
                             }
