@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Datos.Interfaces
 {
-    public interface ILoginReposirorio
+    public interface ILoginRepositorio
     {
         Task<bool> validarUsuarioAsync(Login login);
     }

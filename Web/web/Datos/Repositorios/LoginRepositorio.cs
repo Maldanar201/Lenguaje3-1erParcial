@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Datos.Repositorios
 {
-    internal class LoginRepositorio : ILoginReposirorio
+    public class LoginRepositorio : ILoginRepositorio
     {
         //almacenar la cadena de conexion a la base de Datos en una variable
         private string CadenaConexion;

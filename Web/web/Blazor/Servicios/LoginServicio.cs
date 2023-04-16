@@ -1,13 +1,25 @@
 ﻿using Blazor.Interfaces;
+using Datos.Interfaces;
+using Datos.Repositorios;
 using Modelos;
 
 namespace Blazor.Servicios
 {
     public class LoginServicio : ILoginServicio
     {
-        public Task<bool> validarUsuarioAsync(Login login)
+        private readonly Config _config;
+        private ILoginRepositorio loginRepositorio;
+
+        public LoginServicio(Config config)
         {
-            throw new NotImplementedException();
+            _config = config;
+            loginRepositorio = new LoginRepositorio(config.CadenaConexion);
+        }
+
+
+        public async Task<bool> validarUsuarioAsync(Login login)
+        {
+            return await loginRepositorio.validarUsuarioAsync(login);
         }
     }
 }
