@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    public class Usuarios
+    public class Usuario
     {
         public string CodigoUsuario { get; set; }
         public string Contraseña { get; set; }
@@ -17,11 +17,11 @@ namespace Modelos
         public DateTime FechaCreacion { get; set; }
         public bool EstaActivo { get; set; }
 
-        public Usuarios()
+        public Usuario()
         {
         }
 
-        public Usuarios(string codigoUsuario, string contraseña, string nombre, string correo, string rol, byte[] fotos, DateTime fechaCreacion, bool estaActivo)
+        public Usuario(string codigoUsuario, string contraseña, string nombre, string correo, string rol, byte[] fotos, DateTime fechaCreacion, bool estaActivo)
         {
             CodigoUsuario = codigoUsuario;
             Contraseña = contraseña;

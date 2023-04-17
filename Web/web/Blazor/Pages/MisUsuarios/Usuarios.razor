@@ -22,14 +22,14 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach(Usuarios user in lista)
+            @foreach(Usuario user in lista)
             {
                 <tr>
                     <th>@user.CodigoUsuario</th>
                     <th>@user.Nombre</th>
                     <th>@user.Correo</th>
                     <th>@user.Rol</th>
-                    <th>@user.Foto</th>
+                    <th>@user.Fotos</th>
                     <th>@user.FechaCreacion</th>
                     @if(user.EstaActivo)
                     {

@@ -9,10 +9,10 @@ namespace Datos.Interfaces
 {
     public interface IUsuarioRepositorio
     {
-        Task<Usuarios> GetPorCodigoAsync(string codigo);
-        Task<bool> NuevoAsync(Usuarios usuario);
-        Task<bool> ActualizarAsync(Usuarios usuario);
+        Task<Usuario> GetPorCodigoAsync(string codigo);
+        Task<bool> NuevoAsync(Usuario usuario);
+        Task<bool> ActualizarAsync(Usuario usuario);
         Task<bool> EliminarAsync(string codigo);
-        Task<IEnumerable<Usuarios>> GetListaAsync();
+        Task<IEnumerable<Usuario>> GetListaAsync();
     }
 }

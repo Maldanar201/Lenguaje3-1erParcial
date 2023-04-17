@@ -28,7 +28,7 @@ namespace Datos.Repositorios
         }
 
 
-        public async Task<bool> ActualizarAsync(Usuarios usuario)
+        public async Task<bool> ActualizarAsync(Usuario usuario)
         {
             bool resultado = false;
             try
@@ -61,15 +61,15 @@ namespace Datos.Repositorios
             return resultado;
         }
 
-        public async Task<IEnumerable<Usuarios>> GetListaAsync()
+        public async Task<IEnumerable<Usuario>> GetListaAsync()
         {
-            IEnumerable<Usuarios> lista = new List<Usuarios>();
+            IEnumerable<Usuario> lista = new List<Usuario>();
             try
             {
                 using MySqlConnection _conexion = Conexion(); //abrimos un metodo using para llamar la cadena de conexion a la BD
                 await _conexion.OpenAsync(); // abrimos la conexion asincronica a la BD
                 string sql = "SELECT * FROM usuarios;";
-                lista = await _conexion.QueryAsync<Usuarios>(sql);               
+                lista = await _conexion.QueryAsync<Usuario>(sql);               
                 
             }
             catch (Exception)
@@ -78,15 +78,15 @@ namespace Datos.Repositorios
             return lista;
         }
 
-        public async Task<Usuarios> GetPorCodigoAsync(string codigo)
+        public async Task<Usuario> GetPorCodigoAsync(string codigo)
         {
-            Usuarios user = new Usuarios();
+            Usuario user = new Usuario();
             try
             {
                 using MySqlConnection _conexion = Conexion(); //abrimos un metodo using para llamar la cadena de conexion a la BD
                 await _conexion.OpenAsync(); // abrimos la conexion asincronica a la BD
                 string sql = "SELECT * FROM usuarios WHERE CodigoUSuario = @CodigoUsuario;";
-                user = await _conexion.QueryFirstAsync<Usuarios>(sql, new {codigo});
+                user = await _conexion.QueryFirstAsync<Usuario>(sql, new {codigo});
             }
             catch (Exception)
             {
@@ -94,7 +94,7 @@ namespace Datos.Repositorios
             return user;
         }
 
-        public async Task<bool> NuevoAsync(Usuarios usuario)
+        public async Task<bool> NuevoAsync(Usuario usuario)
         {
             bool resultado = false;
             try
