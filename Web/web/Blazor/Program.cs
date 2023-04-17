@@ -2,6 +2,7 @@
 using Blazor;
 using Blazor.Interfaces;
 using Blazor.Servicios;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -16,6 +17,8 @@ builder.Services.AddSingleton(cadena);
 
 builder.Services.AddScoped<ILoginServicio, LoginServicio>();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(); // tipo de autentificacion que usamos
+builder.Services.AddHttpContextAccessor(); // acceder a los ususarios de la BD
 
 var app = builder.Build();
 
@@ -31,8 +34,11 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
-app.UseRouting();
+app.UseAuthentication(); //valida el ususario si existe o esta activo
+app.UseAuthorization();  // valida los roles o permisos del ususario
 
+app.UseRouting();
+app.MapControllers(); // indica que la aplicacion utilizara controles de blazor
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
