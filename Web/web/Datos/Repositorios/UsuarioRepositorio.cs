@@ -28,7 +28,7 @@ namespace Datos.Repositorios
         }
 
 
-        public async Task<bool> ActualizarAsync(Usuario usuario)
+        public async Task<bool> ActualizarAsync(Usuarios usuario)
         {
             bool resultado = false;
             try
@@ -45,7 +45,7 @@ namespace Datos.Repositorios
             return resultado;
         }
 
-        public async Task<bool> EliminarAsync(string codigo)
+        public async Task<bool> EliminarAsync(string codigoUsuario)
         {
             bool resultado = false;
             try
@@ -53,7 +53,7 @@ namespace Datos.Repositorios
                 using MySqlConnection _conexion = Conexion(); //abrimos un metodo using para llamar la cadena de conexion a la BD
                 await _conexion.OpenAsync(); // abrimos la conexion asincronica a la BD
                 string sql = "DELETE FROM usuarios WHERE CodigoUSuario = @CodigoUsuario;";                
-                resultado = Convert.ToBoolean(await _conexion.ExecuteAsync(sql, new {codigo}));
+                resultado = Convert.ToBoolean(await _conexion.ExecuteAsync(sql, new {codigoUsuario}));
             }
             catch (Exception)
             {
@@ -61,15 +61,15 @@ namespace Datos.Repositorios
             return resultado;
         }
 
-        public async Task<IEnumerable<Usuario>> GetListaAsync()
+        public async Task<IEnumerable<Usuarios>> GetListaAsync()
         {
-            IEnumerable<Usuario> lista = new List<Usuario>();
+            IEnumerable<Usuarios> lista = new List<Usuarios>();
             try
             {
                 using MySqlConnection _conexion = Conexion(); //abrimos un metodo using para llamar la cadena de conexion a la BD
                 await _conexion.OpenAsync(); // abrimos la conexion asincronica a la BD
                 string sql = "SELECT * FROM usuarios;";
-                lista = await _conexion.QueryAsync<Usuario>(sql);               
+                lista = await _conexion.QueryAsync<Usuarios>(sql);               
                 
             }
             catch (Exception)
@@ -78,15 +78,15 @@ namespace Datos.Repositorios
             return lista;
         }
 
-        public async Task<Usuario> GetPorCodigoAsync(string codigo)
+        public async Task<Usuarios> GetPorCodigoAsync(string codigoUsuario)
         {
-            Usuario user = new Usuario();
+            Usuarios user = new Usuarios();
             try
             {
                 using MySqlConnection _conexion = Conexion(); //abrimos un metodo using para llamar la cadena de conexion a la BD
                 await _conexion.OpenAsync(); // abrimos la conexion asincronica a la BD
                 string sql = "SELECT * FROM usuarios WHERE CodigoUSuario = @CodigoUsuario;";
-                user = await _conexion.QueryFirstAsync<Usuario>(sql, new {codigo});
+                user = await _conexion.QueryFirstAsync<Usuarios>(sql, new {codigoUsuario});
             }
             catch (Exception)
             {
@@ -94,7 +94,7 @@ namespace Datos.Repositorios
             return user;
         }
 
-        public async Task<bool> NuevoAsync(Usuario usuario)
+        public async Task<bool> NuevoAsync(Usuarios usuario)
         {
             bool resultado = false;
             try

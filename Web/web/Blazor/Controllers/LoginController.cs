@@ -15,7 +15,7 @@ namespace Blazor.Controllers
         private ILoginRepositorio _loginRepositorio;
         private IUsuarioRepositorio _usuarioRepositorio; 
 
-        LoginController(Config config)
+        public LoginController(Config config)
         {
             _config = config;
             _loginRepositorio = new LoginRepositorio(config.CadenaConexion);
@@ -32,7 +32,7 @@ namespace Blazor.Controllers
 
                 if (usuarioValido) 
                 {
-                    Usuario user = await _usuarioRepositorio.GetPorCodigoAsync(login.CodigoUsuario);
+                    Usuarios user = await _usuarioRepositorio.GetPorCodigoAsync(login.CodigoUsuario);
 
                     if(user.EstaActivo)
                     {

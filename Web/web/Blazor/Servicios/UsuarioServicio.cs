@@ -17,7 +17,7 @@ namespace Blazor.Servicios
         }
                 
 
-        public async Task<bool> ActualizarAsync(Usuario usuario)
+        public async Task<bool> ActualizarAsync(Usuarios usuario)
         {
             return await usuarioRepositorio.ActualizarAsync(usuario);
         }
@@ -27,17 +27,17 @@ namespace Blazor.Servicios
             return await usuarioRepositorio.EliminarAsync(codigo);
         }
 
-        public async Task<IEnumerable<Usuario>> GetListaAsync()
+        public async Task<IEnumerable<Usuarios>> GetListaAsync()
         {
             return await usuarioRepositorio.GetListaAsync();
         }
 
-        public async Task<Usuario> GetPorCodigoAsync(string codigo)
+        public async Task<Usuarios> GetPorCodigoAsync(string codigo)
         {
             return await usuarioRepositorio.GetPorCodigoAsync(codigo);
         }
 
-        public async Task<bool> NuevoAsync(Usuario usuario)
+        public async Task<bool> NuevoAsync(Usuarios usuario)
         {
             return await usuarioRepositorio.NuevoAsync(usuario);
         }

@@ -5,11 +5,11 @@ using Modelos;
 
 namespace Blazor.Pages.MisUsuarios
 {
-    public partial class Usuarios
+    public partial class Usuario
     {
         [Inject] private IUsuarioServicio usuarioServicio { get; set; } //injeccion de dependencias
 
-        private IEnumerable<Usuario> lista { get; set; }
+        private IEnumerable<Modelos.Usuarios> lista { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
