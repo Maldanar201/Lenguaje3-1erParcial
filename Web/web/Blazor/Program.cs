@@ -2,6 +2,7 @@
 using Blazor;
 using Blazor.Interfaces;
 using Blazor.Servicios;
+using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -19,6 +20,9 @@ builder.Services.AddScoped<ILoginServicio, LoginServicio>();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(); // tipo de autentificacion que usamos
 builder.Services.AddHttpContextAccessor(); // acceder a los ususarios de la BD
+builder.Services.AddResponseCompression();
+builder.Services.AddControllers();
+builder.Services.AddSweetAlert2();
 
 var app = builder.Build();
 
