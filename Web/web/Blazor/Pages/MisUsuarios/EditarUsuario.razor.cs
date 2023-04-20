@@ -1,6 +1,7 @@
 ﻿using Blazor.Interfaces;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using Modelos;
 
 namespace Blazor.Pages.MisUsuarios
@@ -12,8 +13,10 @@ namespace Blazor.Pages.MisUsuarios
 
         [Inject] private SweetAlertService Swal { get; set; }
 
-        private Usuarios user = new Usuarios();
+        private Modelos.Usuario user = new Modelos.Usuario();
         [Parameter] public string CodigoUsuario { get; set; }
+
+        string imgUrl = string.Empty;
 
         protected override async Task OnInitializedAsync()
         {
@@ -21,6 +24,17 @@ namespace Blazor.Pages.MisUsuarios
             {
                 user = await usuarioServicio.GetPorCodigoAsync(CodigoUsuario);
             }
+        }
+
+        private async Task SeleccionarImagen(InputFileChangeEventArgs e)
+        {
+            IBrowserFile imgFile = e.File;  // carga imgFile con la imagen que viene del navegador
+            var buffers = new byte[imgFile.Size]; // asig a buffers el arreglo de bytes con la imagen
+            user.Foto = buffers;
+            await imgFile.OpenReadStream().ReadAsync(buffers); // muestra vista previa de la imagen
+            string imageType = imgFile.ContentType;
+            imgUrl = $"data:{imageType};base64,{Convert.ToBase64String(buffers)}";
+            
         }
 
         protected async void Guardar()

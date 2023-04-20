@@ -1,9 +1,9 @@
-﻿@page "/Usuarios/Editar/{CodigoUsuario}"
+﻿@page "/Usuarios/Nuevo"
 
 
 <AuthorizeView Roles="Administrador">
     <Authorized Context="AuthenticationState">
-        <h3>Editar Usuario</h3>
+        <h3>Nuevo Usuario</h3>
 
         <EditForm Model="@user">
             <DataAnnotationsValidator />
@@ -12,9 +12,8 @@
                     Codigo Usuario
                 </label>
                 <div class="col-sm-10">
-                    <label for="CodigoUsuario" class="col-form-label">
-                        @user.CodigoUsuario
-                    </label>
+                    <InputText id="CodigoUsuario" class="form-control" @bind-Value="user.CodigoUsuario" />
+                    <ValidationMessage For="@(() => user.CodigoUsuario)" />
                 </div>
             </div>
 
@@ -28,7 +27,7 @@
                 </div>
             </div>
 
-             <div class="form-group row">
+            <div class="form-group row">
                 <label for="Contrasena" class="col-sm-2 col-form-label">
                     Contraseña
                 </label>
@@ -43,7 +42,7 @@
                     Correo
                 </label>
                 <div class="col-sm-10">
-                    <InputText id="Correo" type="email" class="form-control" @bind-Value="user.Correo" />                    
+                    <InputText id="Correo" type="email" class="form-control" @bind-Value="user.Correo" />
                 </div>
             </div>
 
@@ -53,7 +52,7 @@
                 </label>
                 <div class="col-sm-10">
                     <InputSelect class="form-control" @bind-Value="user.Rol">
-                        @foreach(var rol in Enum.GetValues(typeof(Roles)))
+                        @foreach (var rol in Enum.GetValues(typeof(Roles)))
                         {
                             <option value="@rol">@rol</option>
                         }
@@ -62,13 +61,13 @@
                 </div>
             </div>
 
-             <div class="form-group row">
+            <div class="form-group row">
                 <label for="Fotos" class="col-sm-2 col-form-label">
                     Foto
                 </label>
                 <div class="col-sm-10">
-                    <InputFile OnChange="@SeleccionarImagen"  />  
-                    @if(user.Foto != null)
+                    <InputFile OnChange="@SeleccionarImagen" />
+                    @if (user.Foto != null)
                     {
                         <img width="250" height="250" src="dat:image;base64,@System.Convert.ToBase64String(user.Foto)" />
                     }
@@ -95,15 +94,14 @@
                     Esta Activo
                 </label>
                 <div class="col-sm-10">
-                    <InputCheckbox  @bind-Value="user.EstaActivo" />
+                    <InputCheckbox @bind-Value="user.EstaActivo" />
                 </div>
             </div>
 
             <div class="form-group row">
                 <p>
                     <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
-                    <input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
-                    <input type="submit" class="btn btn-warning" value="Eliminar" @onclick="Eliminar" />
+                    <input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />                    
                 </p>
             </div>
 
@@ -116,4 +114,3 @@
         <h3>No tiene permiso para ingresar a esta Ruta</h3>
     </NotAuthorized>
 </AuthorizeView>
-

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Modelos
 {
-    public class Usuarios
+    public class Usuario
     {
         [Required(ErrorMessage = "El Campo Codigo es Obligatorio")] 
         public string CodigoUsuario { get; set; }
@@ -17,22 +17,22 @@ namespace Modelos
         public string Correo { get; set; }
         [Required(ErrorMessage = "El Campo Rol es Obligatorio")]
         public string Rol { get; set; }
-        public byte[] Fotos { get; set; }
+        public byte[] Foto { get; set; }
         public DateTime FechaCreacion { get; set; }
         public bool EstaActivo { get; set; }
 
-        public Usuarios()
+        public Usuario()
         {
         }
 
-        public Usuarios(string codigoUsuario, string contrasena, string nombre, string correo, string rol, byte[] fotos, DateTime fechaCreacion, bool estaActivo)
+        public Usuario(string codigoUsuario, string contrasena, string nombre, string correo, string rol, byte[] fotos, DateTime fechaCreacion, bool estaActivo)
         {
             CodigoUsuario = codigoUsuario;
             Contrasena = contrasena;
             Nombre = nombre;
             Correo = correo;
             Rol = rol;
-            Fotos = fotos;
+            Foto = fotos;
             FechaCreacion = fechaCreacion;
             EstaActivo = estaActivo;
         }
