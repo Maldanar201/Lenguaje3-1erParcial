@@ -1,0 +1,21 @@
+﻿@page "/Productos/Nuevo"
+
+
+
+<AuthorizeView Roles="Administrador">
+    <Authorized Context="AuthenticationState">
+        <h3>Nuevo Producto</h3>
+
+        <EditForm Model="@prod">
+            <DataAnnotationsValidator />
+
+
+
+
+        </EditForm>
+
+    </Authorized>
+    <NotAuthorized>
+        <h3>No tiene permiso para ingresar a esta Ruta</h3>
+    </NotAuthorized>
+</AuthorizeView>
