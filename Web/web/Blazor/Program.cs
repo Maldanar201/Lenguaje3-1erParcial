@@ -18,6 +18,8 @@ builder.Services.AddSingleton(cadena);
 
 builder.Services.AddScoped<ILoginServicio, LoginServicio>();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
+builder.Services.AddScoped<IProductoServicio, ProductoServicio>();
+builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(); // tipo de autentificacion que usamos
 builder.Services.AddHttpContextAccessor(); // acceder a los ususarios de la BD
 builder.Services.AddResponseCompression();

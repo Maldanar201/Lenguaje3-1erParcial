@@ -2,6 +2,7 @@
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Modelos;
 
 namespace Blazor.Pages.MisUsuarios
 {
@@ -12,7 +13,7 @@ namespace Blazor.Pages.MisUsuarios
 
         [Inject] private SweetAlertService Swal { get; set; }
 
-        private Modelos.Usuario user = new Modelos.Usuario();
+        private Usuario user = new Usuario();
         [Parameter] public string CodigoUsuario { get; set; }
 
         string imgUrl = string.Empty;
