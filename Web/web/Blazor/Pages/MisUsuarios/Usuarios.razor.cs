@@ -9,7 +9,7 @@ namespace Blazor.Pages.MisUsuarios
     {
         [Inject] private IUsuarioServicio usuarioServicio { get; set; } //injeccion de dependencias
 
-        private IEnumerable<Modelos.Usuario> lista { get; set; }
+        private IEnumerable<Usuario> lista { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

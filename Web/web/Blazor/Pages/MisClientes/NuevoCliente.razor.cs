@@ -14,12 +14,16 @@ namespace Blazor.Pages.MisClientes
 
         Cliente cliente = new Cliente();
 
+        [Parameter] public string Identidad { get; set; }
+
         protected async Task Guardar()
         {
             if (string.IsNullOrWhiteSpace(cliente.Identidad) || string.IsNullOrWhiteSpace(cliente.Nombre))
             {
                 return;
             }
+
+            cliente.FechaNacimiento = DateTime.Now;
 
             Cliente clienExistente = new Cliente();
             clienExistente = await clienteServicio.GetPorIdentidadAsync(cliente.Identidad);
@@ -34,6 +38,7 @@ namespace Blazor.Pages.MisClientes
             if (inserto)
             {
                 await Swal.FireAsync("Atencion", "Cliente Guardado exitosamente", SweetAlertIcon.Success);
+                navigationManager.NavigateTo("/Clientes");
             }
             else
             {
