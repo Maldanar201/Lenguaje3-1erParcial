@@ -22,9 +22,9 @@ namespace Blazor.Servicios
             return await productoRepositorio.ActiualizarAsync(producto);
         }
 
-        public async Task<bool> EliminaAsync(string codigo)
+        public async Task<bool> EliminarAsync(string codigo)
         {
-            return await productoRepositorio.EliminaAsync(codigo);
+            return await productoRepositorio.EliminarAsync(codigo);
         }
 
         public async Task<IEnumerable<Producto>> GetlistaAsync()

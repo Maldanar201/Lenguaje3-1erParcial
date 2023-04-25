@@ -1,8 +1,8 @@
-﻿@page "/Productos/Nuevo"
+﻿@page "/Productos/Editar/{Codigo}"
 
 <AuthorizeView Roles="Administrador">
     <Authorized Context="AuthenticationState">
-        <h3>Nuevo Producto</h3>
+        <h3>Editar Producto</h3>
 
         <EditForm Model="@prod">
             <DataAnnotationsValidator />
@@ -11,8 +11,9 @@
                     Codigo Producto
                 </label>
                 <div class="col-sm-10">
-                    <InputText id="Codigo" class="form-control" @bind-Value="prod.Codigo" />
-                    <ValidationMessage For="@(() => prod.Codigo)" />
+                    <label for="Codigo" class="col-sm-2 col-form-label">
+                    @prod.Codigo
+                </label>
                 </div>
             </div>
 
@@ -76,6 +77,7 @@
                 <p>
                     <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
                     <input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+                    <input type="submit" class="btn btn-secondary" value="Eliminarr" @onclick="Eliminar" />
                 </p>
             </div>
 
@@ -86,3 +88,4 @@
         <h3>No tiene permiso para ingresar a esta Ruta</h3>
     </NotAuthorized>
 </AuthorizeView>
+

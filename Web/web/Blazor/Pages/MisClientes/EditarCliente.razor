@@ -1,8 +1,8 @@
-﻿@page "/Clientes/Nuevo"
+﻿@page "/Clientes/Editar/{Identidad}"
 
 <AuthorizeView Roles="Administrador">
     <Authorized Context="AuthenticationState">
-        <h3>Nuevo Cliente</h3>
+        <h3>Editar Cliente</h3>
 
         <EditForm Model="@clien">
             <DataAnnotationsValidator />
@@ -11,8 +11,9 @@
                     Identidad Cliente
                 </label>
                 <div class="col-sm-10">
-                    <InputNumber id="Identidad" class="form-control" @bind-Value="clien.Identidad" />
-                    <ValidationMessage For="@(() => clien.Identidad)" />
+                    <label for="Identidad" class="col-sm-2 col-form-label">
+                    Identidad Cliente
+                </label>
                 </div>
             </div>
 
@@ -80,6 +81,7 @@
                 <p>
                     <input type="submit" class="btn btn-primary" value="Guardar" @onclick="Guardar" />
                     <input type="submit" class="btn btn-danger" value="Cancelar" @onclick="Cancelar" />
+                    <input type="submit" class="btn btn-secondary" value="Eliminarr" @onclick="Eliminar" />
                 </p>
             </div>
 

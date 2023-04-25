@@ -7,28 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\MisProductos\NuevoProducto.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CurrieTechnologies.Razor.SweetAlert2" Version="5.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj" />
     <ProjectReference Include="..\Modelos\Modelos.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\MisProductos\NuevoProducto.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\MisProductos\NuevoProducto.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\MisProductos\NuevoProducto.razor" />
   </ItemGroup>
 
 </Project>

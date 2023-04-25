@@ -41,7 +41,7 @@ namespace Datos.Repositorios
             return resultado;
         }
 
-        public async Task<bool> EliminaAsync(string codigo)
+        public async Task<bool> EliminarAsync(string codigo)
         {
             bool resultado = false;
             try

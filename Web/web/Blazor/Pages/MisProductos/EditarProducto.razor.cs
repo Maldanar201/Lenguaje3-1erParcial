@@ -1,13 +1,13 @@
 ﻿using Blazor.Interfaces;
 using CurrieTechnologies.Razor.SweetAlert2;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Components;
 using Modelos;
+using Blazor.Servicios;
 
 namespace Blazor.Pages.MisProductos
 {
-    public partial class NuevoProducto
+    public partial class EditarProducto
     {
         [Inject] private IProductoServicio productoServicio { get; set; }
         [Inject] private NavigationManager navigationManager { get; set; }
@@ -15,7 +15,17 @@ namespace Blazor.Pages.MisProductos
 
         Producto prod = new Producto();
 
+        [Parameter] public string Codigo { get; set; }
+
         string imgUrl = string.Empty;
+
+        protected override async Task OnInitializedAsync()
+        {
+            if(!string.IsNullOrEmpty(Codigo))
+            {
+                prod = await productoServicio.GetPorCodigoAsync(Codigo);
+            }
+        }
 
         private async Task SeleccionarImagen(InputFileChangeEventArgs e)
         {
@@ -33,19 +43,10 @@ namespace Blazor.Pages.MisProductos
             if (string.IsNullOrWhiteSpace(prod.Codigo) || string.IsNullOrWhiteSpace(prod.Descripcion))
             {
                 return;
-            }
+            }           
 
-            Producto prodExistente = new Producto();
-            prodExistente = await productoServicio.GetPorCodigoAsync(prod.Codigo);
-
-            if (prodExistente == null)
-            {
-                await Swal.FireAsync("Advertencia", "Ya esiste un producto con el mismo codigo", SweetAlertIcon.Warning);
-                return;
-            }
-
-            bool inserto = await productoServicio.NuevoAsync(prod);
-            if (inserto)
+            bool edito = await productoServicio.ActiualizarAsync(prod);
+            if (edito)
             {
                 await Swal.FireAsync("Atencion", "Producto Guardado exitosamente", SweetAlertIcon.Success);
             }
@@ -57,6 +58,37 @@ namespace Blazor.Pages.MisProductos
 
         protected async Task Cancelar()
         {
+            navigationManager.NavigateTo("/Productos");
+        }
+
+        protected async Task Eliminar()
+        {
+            bool elimino = false;
+
+            SweetAlertResult result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "¿Seguro que desea eliminar el Producto?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true,
+                ConfirmButtonText = "Aceptar",
+                CancelButtonText = "Cancelar",
+            });
+
+            if (!string.IsNullOrEmpty(result.Value))
+            {
+                elimino = await productoServicio.EliminarAsync(prod.Codigo);
+
+                if (elimino)
+                {
+                    await Swal.FireAsync("Felicidades", "El Producto se Elimino", SweetAlertIcon.Success);
+                    navigationManager.NavigateTo("/Productos");
+                }
+                else
+                {
+                    await Swal.FireAsync("Error", "El Producto No pudo ser Eliminado", SweetAlertIcon.Error);
+                }
+            }
+
             navigationManager.NavigateTo("/Productos");
         }
     }
