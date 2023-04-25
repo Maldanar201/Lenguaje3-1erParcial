@@ -29,17 +29,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (Cliente clien in listaClientes)
+                    @foreach (Cliente cliente in listaClientes)
                     {
                         <tr>
-                            <th>@clien.Identidad</th>
-                            <th>@clien.Nombre</th>
-                            <th>@clien.Telefono</th>
-                            <th>@clien.Correo</th>
-                            <th>@clien.</th>
-                            <th>@clien.Direccion</th>                           
-                            <th>@clien.FechaNacimiento</th>
-                            @if (clien.EstaActivo)
+                            <th>@cliente.Identidad</th>
+                            <th>@cliente.Nombre</th>
+                            <th>@cliente.Telefono</th>
+                            <th>@cliente.Correo</th>
+                            <th>@cliente.</th>
+                            <th>@cliente.Direccion</th>                           
+                            <th>@cliente.FechaNacimiento</th>
+                            @if (cliente.EstaActivo)
                             {
                                 <th>
                                     <span class="oi oi-circle-check" style="color:green;"></span>
@@ -52,7 +52,7 @@
                                 </th>
                             }
                             <th>
-                                <a class="btn btn-success" href="@($"/Clientes/Editar/{clien.Identidad}")">Editar</a>
+                                <a class="btn btn-success" href="@($"/Clientes/Editar/{cliente.Identidad}")">Editar</a>
                             </th>
                         </tr>
                     }
