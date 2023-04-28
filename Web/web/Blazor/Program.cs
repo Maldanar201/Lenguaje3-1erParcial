@@ -6,6 +6,7 @@ using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Modelos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ builder.Services.AddScoped<ILoginServicio, LoginServicio>();
 builder.Services.AddScoped<IUsuarioServicio, UsuarioServicio>();
 builder.Services.AddScoped<IProductoServicio, ProductoServicio>();
 builder.Services.AddScoped<IClienteServicio, ClienteServicio>();
+builder.Services.AddScoped<IFacturaServicio, FacturaServicio>();
+builder.Services.AddScoped<IDetalleFacturaServicio, DetalleFacturaServicio>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(); // tipo de autentificacion que usamos
 builder.Services.AddHttpContextAccessor(); // acceder a los ususarios de la BD
 builder.Services.AddResponseCompression();
